@@ -1,6 +1,10 @@
 // params.$target - 해당 컴포넌트가 추가될 DOM 앨리먼트
 // params.initialState - 해당 컴포넌트의 초기 상태
 function TodoList({ $target, initialState }) {
+  if (!new.target) {
+    throw new Error('You must use new with TodoList');
+  }
+
   const $todoList = document.createElement('div');
   $target.appendChild($todoList);
 

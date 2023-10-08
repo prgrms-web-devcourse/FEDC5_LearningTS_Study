@@ -1,4 +1,8 @@
 function TodoForm({ $target, onSubmit }) {
+  if (!new.target) {
+    throw new Error('You must use new with TodoForm');
+  }
+
   const $form = document.createElement('form');
   $target.appendChild($form);
 
