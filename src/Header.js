@@ -1,4 +1,4 @@
-function Header({ $target, text }) {
+export default function Header({ $target, text }) {
   if (!new.target) {
     throw new Error('You must use new with Header');
   }

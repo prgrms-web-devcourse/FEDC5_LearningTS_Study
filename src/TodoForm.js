@@ -1,4 +1,4 @@
-function TodoForm({ $target, onSubmit }) {
+export default function TodoForm({ $target, onSubmit }) {
   if (!new.target) {
     throw new Error('You must use new with TodoForm');
   }
