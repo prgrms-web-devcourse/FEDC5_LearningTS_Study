@@ -6,7 +6,7 @@ export const setItem = (key, value) => {
   } catch (error) {
     console.log(error);
   }
-}
+};
 
 export const getItem = (key, defaultValue) => {
   try {
@@ -17,4 +17,4 @@ export const getItem = (key, defaultValue) => {
     console.log(error);
     return defaultValue;
   }
-}
+};

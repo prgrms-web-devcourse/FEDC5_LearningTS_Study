@@ -1,9 +1,9 @@
 export default function TodoForm({ $target, onSubmit }) {
   if (!new.target) {
-    throw new Error('You must use new with TodoForm');
+    throw new Error("You must use new with TodoForm");
   }
 
-  const $form = document.createElement('form');
+  const $form = document.createElement("form");
   $target.appendChild($form);
 
   let isInit = false;
@@ -15,18 +15,18 @@ export default function TodoForm({ $target, onSubmit }) {
     `;
 
     if (!isInit) {
-      $form.addEventListener('submit', e => {
+      $form.addEventListener("submit", (e) => {
         e.preventDefault(); // 태그가 갖고 있는 고유 기능 막기(form 태그의 새로고침 막기)
 
-        const $todo = $form.querySelector('input[name=todo]');
+        const $todo = $form.querySelector("input[name=todo]");
         const text = $todo.value;
         if (text.length > 1) {
-          $todo.value = '';
+          $todo.value = "";
           onSubmit(text);
         }
       });
     }
-  }
+  };
 
   this.render();
 }

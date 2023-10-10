@@ -7,16 +7,13 @@ import { setItem } from "./storage.js";
 export default function App({ $target, initialState, initialCount }) {
   new Header({
     $target,
-    text: 'Todo List'
+    text: "Todo List",
   });
 
   new TodoForm({
     $target,
-    onSubmit: text => {
-      const nextState = [
-        ...todoList.state,
-        { text, isCompleted: false }
-      ];
+    onSubmit: (text) => {
+      const nextState = [...todoList.state, { text, isCompleted: false }];
       todoList.setState(nextState);
       setItem("todo", JSON.stringify(nextState));
 
