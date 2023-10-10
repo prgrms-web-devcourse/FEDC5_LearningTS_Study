@@ -14,7 +14,7 @@ export default function App({ $target, initialState }) {
     onSubmit: text => {
       const nextState = [
         ...todoList.state,
-        { text }
+        { text, isCompleted: false }
       ];
       todoList.setState(nextState);
       setItem('todo', JSON.stringify(nextState));

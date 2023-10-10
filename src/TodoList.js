@@ -1,3 +1,5 @@
+import { setItem } from "./storage.js";
+
 // params.$target - 해당 컴포넌트가 추가될 DOM 앨리먼트
 // params.initialState - 해당 컴포넌트의 초기 상태
 export default function TodoList({ $target, initialState }) {
@@ -18,10 +20,45 @@ export default function TodoList({ $target, initialState }) {
   this.render = () => {
     $todoList.innerHTML = `
       <ul>
-        ${this.state.map(({ text }) => `<li>${text}</li>`).join('')}
+        ${this.state
+          .map(
+            ({ text, isCompleted }) => `
+              <li class=${isCompleted ? "completed" : ""}>
+                <input type="checkbox" ${isCompleted ? "checked" : ""} />
+                ${text}
+              </li>
+            `
+          )
+          .join("")}
       </ul>
     `;
-  }
+
+    const liList = $todoList.querySelectorAll("li");
+    liList.forEach(($li, index) => {
+      $li.addEventListener("click", (e) => {
+        const checkbox = e.currentTarget.children[0];
+        if (e.target.tagName !== "INPUT") {
+          // checkbox가 아닌 부분을 클릭했을 때 checked 상태를 변경
+          checkbox.checked = !checkbox.checked;
+        }
+
+        const isCompleted = checkbox.checked;
+        if (isCompleted) {
+          e.currentTarget.classList.add("completed");
+        } else {
+          e.currentTarget.classList.remove("completed");
+        }
+
+        const newState = [...this.state];
+        newState[index] = {
+          ...newState[index],
+          isCompleted,
+        };
+        this.setState(newState);
+        setItem("todo", JSON.stringify(newState));
+      });
+    });
+  };
 
   this.render();
 }

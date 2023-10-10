@@ -1,0 +1,12 @@
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  cursor: pointer;
+}
+
+.completed {
+  text-decoration: line-through;
+}
