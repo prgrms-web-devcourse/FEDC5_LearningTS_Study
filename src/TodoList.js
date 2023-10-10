@@ -25,13 +25,27 @@ export default function TodoList({ $target, initialState }) {
             ({ text, isCompleted }) => `
               <li class=${isCompleted ? "completed" : ""}>
                 <input type="checkbox" ${isCompleted ? "checked" : ""} />
-                ${text}
+                <span>${text}</span>
+                <button class="deleteBtn">삭제</button>
               </li>
             `
           )
           .join("")}
       </ul>
     `;
+
+    const deleteButtonAll = $todoList.querySelectorAll(".deleteBtn");
+    deleteButtonAll.forEach(($deleteBtn, index) => {
+      $deleteBtn.addEventListener("click", (e) => {
+        // list의 li 혹은 checkbox를 클릭했을 때 이벤트 전파를 막기 위함
+        e.stopPropagation();
+
+        const newState = [...this.state];
+        newState.splice(index, 1);
+        this.setState(newState);
+        setItem("todo", JSON.stringify(newState));
+      });
+    });
 
     const liList = $todoList.querySelectorAll("li");
     liList.forEach(($li, index) => {
