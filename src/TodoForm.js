@@ -23,7 +23,7 @@ export default function TodoForm({ $target, onSubmit }) {
         if (text.length > 1) {
           $todo.value = "";
           onSubmit(text);
-        }
+        } else alert("두 글자 이상 입력해주세요");
       });
     }
   };
