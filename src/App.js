@@ -15,28 +15,27 @@ export default function App({ $target, initialState, initialCount }) {
     onSubmit: (text) => {
       const nextState = [...todoList.state, { text, isCompleted: false }];
       todoList.setState(nextState);
+      updateCount(nextState);
       setItem("todo", JSON.stringify(nextState));
-
-      const done = nextState.filter((todo) => todo.isCompleted).length;
-      const count = { total: nextState.length, done };
-      todoCount.setState(count);
-      setItem("count", JSON.stringify(count));
     },
   });
 
   const todoList = new TodoList({
     $target,
     initialState,
-    updateCount: () => {
-      const done = todoList.state.filter((todo) => todo.isCompleted).length;
-      const nextState = { total: todoList.state.length, done };
-      todoCount.setState(nextState);
-      setItem("count", JSON.stringify(nextState));
-    },
+    updateCount: () => updateCount(todoList.state),
   });
 
   const todoCount = new TodoCount({
     $target,
     initialCount,
   });
+
+  // 카운트 업데이트
+  const updateCount = (todoList) => {
+    const done = todoList.filter((todo) => todo.isCompleted).length;
+    const nextState = { total: todoList.length, done };
+    todoCount.setState(nextState);
+    setItem("count", JSON.stringify(nextState));
+  };
 }
