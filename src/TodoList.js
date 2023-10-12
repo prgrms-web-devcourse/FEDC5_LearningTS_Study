@@ -10,7 +10,8 @@ export default function TodoList({ $target, initialState, updateCount }) {
   const $todoList = document.createElement("div");
   $target.appendChild($todoList);
 
-  this.state = initialState;
+  if (Array.isArray(initialState)) this.state = initialState;
+  else this.state = [];
 
   this.setState = (nextState) => {
     this.state = nextState;

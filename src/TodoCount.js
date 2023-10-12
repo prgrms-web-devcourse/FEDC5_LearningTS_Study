@@ -6,7 +6,9 @@ export default function TodoCount({ $target, initialCount }) {
   const $container = document.createElement("div");
   $target.appendChild($container);
 
-  this.state = initialCount;
+  if (initialCount.total && initialCount.done) {
+    this.state = initialCount;
+  } else this.state = { total: 0, done: 0 };
 
   this.setState = (nextState) => {
     this.state = nextState;
