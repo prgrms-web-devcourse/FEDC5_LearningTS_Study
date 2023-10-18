@@ -1,7 +1,7 @@
+import validation from "./util/validation.js";
+
 export default function TodoForm({ $target, onSubmit }) {
-  if (!new.target) {
-    throw new Error("You must use new with TodoForm");
-  }
+  validation.newTarget(new.target);
 
   const $form = document.createElement("form");
   $target.appendChild($form);

@@ -1,7 +1,7 @@
+import validation from "./util/validation.js";
+
 export default function TodoCount({ $target, initialCount }) {
-  if (!new.target) {
-    throw new Error("You must use new with TodoCount");
-  }
+  validation.newTarget(new.target);
 
   const $container = document.createElement("div");
   $target.appendChild($container);
