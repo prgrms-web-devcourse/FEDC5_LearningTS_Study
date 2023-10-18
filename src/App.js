@@ -15,15 +15,13 @@ export default function App({ $target, initialState, initialCount }) {
     onSubmit: (text) => {
       const nextState = [...todoList.state, { text, isCompleted: false }];
       todoList.setState(nextState);
-      updateCount(nextState);
-      setItem("todo", JSON.stringify(nextState));
     },
   });
 
   const todoList = new TodoList({
     $target,
     initialState,
-    updateCount: () => updateCount(todoList.state),
+    updateCount: (state) => updateCount(state),
   });
 
   const todoCount = new TodoCount({
