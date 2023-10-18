@@ -4,6 +4,12 @@ const validation = {
       throw new Error("You must use new keyword");
     }
   },
+  state(todoList) {
+    return todoList.filter(
+      (todo) =>
+        typeof todo?.text === "string" && typeof todo?.isCompleted === "boolean"
+    );
+  },
 };
 
 export default validation;

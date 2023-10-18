@@ -13,7 +13,10 @@ export default function TodoList({ $target, initialState, updateCount }) {
   else this.state = [];
 
   this.setState = (nextState) => {
-    this.state = nextState;
+    const newState = validation.state(nextState);
+    this.state = newState;
+    setItem("todo", JSON.stringify(newState));
+    updateCount(newState);
     this.render();
   };
 
