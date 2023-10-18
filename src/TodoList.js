@@ -25,10 +25,11 @@ export default function TodoList({ $target, initialState, updateCount }) {
       <ul>
         ${this.state
           .map(
-            ({ text, isCompleted }) => `
-              <li class=${isCompleted ? "completed" : ""}>
-                <input type="checkbox" ${isCompleted ? "checked" : ""} />
-                <span>${text}</span>
+            ({ text, isCompleted }, index) => `
+              <li data-index=${index} class="todoList ${
+              isCompleted ? "completed" : ""
+            }">
+                ${text}
                 <button class="deleteBtn">삭제</button>
               </li>
             `
@@ -36,48 +37,33 @@ export default function TodoList({ $target, initialState, updateCount }) {
           .join("")}
       </ul>
     `;
+  };
 
-    const deleteButtonAll = $todoList.querySelectorAll(".deleteBtn");
-    deleteButtonAll.forEach(($deleteBtn, index) => {
-      $deleteBtn.addEventListener("click", (e) => {
-        // list의 li 혹은 checkbox를 클릭했을 때 이벤트 전파를 막기 위함
-        e.stopPropagation();
+  $todoList.addEventListener("click", (e) => {
+    const { target } = e;
+    const $li = target.closest("li");
 
-        const newState = [...this.state];
+    if ($li) {
+      const newState = [...this.state];
+      const { index } = $li.dataset;
+
+      if (target.className === "deleteBtn") {
         newState.splice(index, 1);
         this.setState(newState);
-        setItem("todo", JSON.stringify(newState));
-        updateCount();
-      });
-    });
+      } else if (target.className.includes("todoList")) {
+        const isCompleted = target.className.includes("completed");
 
-    const liList = $todoList.querySelectorAll("li");
-    liList.forEach(($li, index) => {
-      $li.addEventListener("click", (e) => {
-        const checkbox = e.currentTarget.children[0];
-        if (e.target.tagName !== "INPUT") {
-          // checkbox가 아닌 부분을 클릭했을 때 checked 상태를 변경
-          checkbox.checked = !checkbox.checked;
-        }
+        if (isCompleted) target.classList.remove("completed");
+        else target.classList.add("completed");
 
-        const isCompleted = checkbox.checked;
-        if (isCompleted) {
-          e.currentTarget.classList.add("completed");
-        } else {
-          e.currentTarget.classList.remove("completed");
-        }
-
-        const newState = [...this.state];
         newState[index] = {
           ...newState[index],
-          isCompleted,
+          isCompleted: !isCompleted,
         };
         this.setState(newState);
-        setItem("todo", JSON.stringify(newState));
-        updateCount();
-      });
-    });
-  };
+      }
+    }
+  });
 
   this.render();
 }
