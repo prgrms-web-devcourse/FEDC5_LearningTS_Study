@@ -7,7 +7,7 @@
 > 컴파일러 : 타입 검사기를 실행 후 상응하는 자바스크립트 코드를 생성하는 프로그램
 > 언어 서비스 : VS Code 와 같은 편집기에 개발자에게 유용한 유틸리티를 제공하는 프로그램
 
-코드의 진행은 [플레이그라운드] (https://www.typescriptlang.org/play?#code/MYewdgzgLgBAhjAXDaAnAlmA5jAvDAcgAsQAjAU1QIChrRIQAbcgOkZCwAo4BKIA) 에서 해볼 것
+코드의 진행은 [플레이그라운드](https://www.typescriptlang.org/play?#code/MYewdgzgLgBAhjAXDaAnAlmA5jAvDAcgAsQAjAU1QIChrRIQAbcgOkZCwAo4BKIA) 에서 해볼 것
 
 ## CHAPTER 2
 
