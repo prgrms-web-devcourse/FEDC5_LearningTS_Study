@@ -7,7 +7,7 @@
 
 아래와 같은 코드를 통해서 타입스크립트는 singer 변수가 string임을 유추할 수 있다.
 
-```javascript
+```typescript
 let singer = "Daft Punk";
 ```
 
@@ -22,7 +22,7 @@ let singer = "Daft Punk";
 
 아래 코드에서 .length() 함수처럼 호출하려고 하니 에러가 나서 에러코드를 확인하면 .length의 멤버는 함수가 아닌 숫자라는 오류를 표기한다.
 
-```javascript
+```typescript
 let firstName = "Get Lucky";
 firstName.length();
 ```
@@ -36,7 +36,7 @@ firstName.length();
 
 타입스크립트에서 할당 가능성(Type Assignability)은 변수나 값이 특정 타입으로 할당될 수 있는지를 나타내는 것이다.
 
-```javascript
+```typescript
 let lastName = "Kim";
 lastName = "Ju"; // 정상
 
@@ -54,7 +54,7 @@ lastName = true; // 에러
 TS에서 초기값이 없는 변수는 기본적으로 any라는 타입으로 간주된다. `any타입은 모든 타입을 허용하는 동적 타입이다.` 이러한 any의 문제는 다음과 같다.<br/><br />
 아래와 같은 코드가 문제가 없다고 나온다. 즉 타입스크립트를 사용하는 의미를 없게 하는 코드가 발생할 수 있다.
 
-```javascript
+```typescript
 let juice;
 
 juice = "orange";
@@ -78,7 +78,7 @@ juice.toUpperCase(); // 이미 juice = 123132로 number타입의 값이기 때�
 
 타입의 일치 여부 뿐만 아니라 그 이상의 문제점도 알려준다.
 
-```javascript
+```typescript
 let rapper = "XXXTENTACION";
 rapper.length; // 문제 없이 동작
 rapper.push("!"); // string 타입에서 동작이 불가능하므로 에러 표기

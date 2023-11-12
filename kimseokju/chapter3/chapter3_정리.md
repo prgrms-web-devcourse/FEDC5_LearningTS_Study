@@ -8,7 +8,7 @@
 `이거 또는 저거 혹은 저런거` 라고 값이 2개 이상임을 나타내는 문법<br />
 아래와 같이 버티컬 바 `|` 을 통해서 타입이 여러 개임을 나타낸다. 순서 중요 X
 
-```javascript
+```typescript
 let thinker: string | null = null;
 if (Math.random() > 0.5) {
   thinker = "Susanne Langer";
@@ -17,7 +17,7 @@ if (Math.random() > 0.5) {
 
 하지만 이런 유니언 타입에는 문제가 발생한다. 아래와 같이 값이 변하는 코드에서 toUpperCase는 number타입에서 쓸 수 없는 문제가 발생하고
 
-```javascript
+```typescript
 let value: string | number = Math.random() > 0.5 ? 10 : "Less than 0.5";
 value.toString(); // 정상 동작
 value.toUpperCase(); // 에러 발생
@@ -35,7 +35,7 @@ value.toUpperCase(); // 에러 발생
 
 초기에 값을 할당하고 코드를 실행한다.
 
-```javascript
+```typescript
 let myHome: number | string;
 myHome = "Suwon";
 myHome.toUpperCase();
@@ -47,7 +47,7 @@ myHome.toFixed(); // Property 'toFixed' does not exist on type 'string' 에러 �
 
 조건문으로 판별한다.
 
-```javascript
+```typescript
 let myHome: number | string = Math.random() > 0.5 ? 10 : "Suwon";
 if (myHome === "Suwon") {
   myHome.toUpperCase();
@@ -58,7 +58,7 @@ myHome.toFixed(); // Property 'toFixed' does not exist on type 'string' 에러 �
 
 ### typeof를 통한 내로잉
 
-```javascript
+```typescript
 // 에러 X
 let myHome: number | string = Math.random() > 0.5 ? 10 : "Suwon";
 
@@ -93,7 +93,7 @@ const는 바뀌지 않기에 다음과 같이 바로 리터럴 값으로 인식�
 strictNullChecks 옵션을 켜는 경우 null 이나 undefined에 대한 할당을 제한한다.<br />
 ` “10억 달러 짜리 실수” 라는 발언은 많은 시스템들이 null 로 인해 얼마나 많은 비용을 발생시키고 있으며 얼마나 많은 개발자들이 이를 안전하게 처리 하기 위해 노력을 들이고 있는지 함축적으로 보여 줍니다.` ~~은행 송금에서 버그로 인해 null이 전달되었다면? 을 상상해보자~~ 라는 TMI
 
-```javascript
+```typescript
 // strictNullChecks가 켜져 있을 때
 let name: string = "John";
 name = null; // 에러: Type 'null' is not assignable to type 'string'.
@@ -113,7 +113,7 @@ if (myHome) {
 
 쉽게 말하면 `타입을 변수처럼 사용`하는 것이다.
 
-```javascript
+```typescript
 let firstData: boolean | number | string | null | undefined;
 let secondData: boolean | number | string | null | undefined;
 let thirdData: boolean | number | string | null | undefined;
