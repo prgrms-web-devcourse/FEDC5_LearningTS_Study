@@ -128,12 +128,12 @@ const poem =
 {
 	name: string;
 	pages: number;
-	rhymes?: boolean;
+	rhymes?: undefined;
 }
 |
 {
 	name: string;
-	pages?: number;
+	pages?: undefined;
 	rhymes: boolean;
 }
 */
