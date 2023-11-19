@@ -1,6 +1,7 @@
 // Please clarify any overly wide (permissive) type annotations here! ✨
 let difficulty: 1 | 2 | 3;
 let group: "appetizer" | "entree" | "dessert";
+// 가능한 값은 3개만 존재하도록
 let title: string;
 
 // Start with something quick and painless to prepare...
@@ -18,6 +19,7 @@ console.log(`[${group}] ${title}: ${difficulty}/3 difficulty`);
 // Make a real impact with fancy delectable desserts...
 difficulty = 3;
 group = "dessert";
+// 오타해결
 title = "Coconut Chocolate Ganache";
 console.log(`[${group}] ${title}: ${difficulty}/3 difficulty`);
 

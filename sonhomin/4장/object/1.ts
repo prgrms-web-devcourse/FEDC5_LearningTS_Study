@@ -1,4 +1,5 @@
 // Write your types here! ✨
+// 유형 에너테이션 첨부해라.
 
 let current = {
   name: "Woesong Bridge",

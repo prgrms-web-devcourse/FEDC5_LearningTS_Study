@@ -1,9 +1,9 @@
 // Please fill in any missing type annotations here...
 const headOfTable = "Me!";
-let adjacentLeft;
-let adjacentRight;
-let furtherLeft;
-let furtherRight;
+let adjacentLeft: "Susie" | "Tommy";
+let adjacentRight: "Susie" | "Tommy";
+let furtherLeft: "Angelica" | "Chuckie" | undefined;
+let furtherRight: "Timmy" | "Kimi" | "Chuckie" | undefined;
 
 // I always invite Susie and Tommy! ♥
 if (Math.random() > 0.5) {
@@ -19,11 +19,13 @@ if (Math.random() > 0.5) {
 if (Math.random() > 0.5) {
   furtherLeft = "Angelica";
 }
+// 안젤리카를 앉히겠다.
 
 // Same with Chuckie. I like them, but do I *really* like hanging out with them? Only sometimes.
 // ...then after that `furtherRight`
 if (Math.random() > 0.5) {
   if (furtherLeft) {
+    // 여기서 오류가 발생하는데 undefined로 선언해줘야 해결됨
     furtherRight = "Chuckie";
   } else {
     furtherLeft = "Chuckie";
@@ -49,3 +51,6 @@ console.log(`Further down on the left is: ${adjacentLeft ?? "nobody"}`);
 console.log(`Further down on the right is: ${adjacentRight ?? "nobody"}`);
 
 export {};
+
+// 리터럴 타입만 사용해라.
+// 문자열 유형을 전혀 사용하지 말아라.
