@@ -1,4 +1,7 @@
 // test 왜틀릴까요 .....
+// cd 이예진/learning-typescript-projects/projects/unions-and-literals/the-narrow-trail
+// npm run tsc -- --watch
+// npm run test -- --watch
 
 /*
 7일 후 food와 water 둘다 남아있어야한다.

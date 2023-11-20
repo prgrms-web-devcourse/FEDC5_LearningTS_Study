@@ -74,12 +74,11 @@ function Humanoid(name, abilities, catchphrase) {
 	Robot.apply(this, [name, abilities]);
 	this.catchphrase = catchphrase;
 }
-for (var i in Robot.prototype) {
+for (var i in Robot.prototype) { /////이게 확장(상속)의 코드일 것 같다 !
 	if ({}.hasOwnProperty.call(Robot.prototype, i)) {
 		Humanoid.prototype[i] = Robot.prototype[i];
 	}
 }
-/////이게 확장(상속)의 코드일까..?
 Humanoid.prototype.announce = function announce() {
 	Robot.prototype.announce.apply(this);
 	console.log(" > " + this.catchphrase + " <");
