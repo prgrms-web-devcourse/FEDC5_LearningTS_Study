@@ -10,14 +10,14 @@ export type Ingredients = {
 };
 
 export type RecipeResultFailed = {
-  newStock: Ingredients;
+  newStock?: Ingredients;
   // 왜 오류?
   // boolean으로 하면 왜 안되지?
   succeeded: boolean;
 };
 
 export type RecipeResultSucceeded = {
-  newStock: Ingredients;
+  newStock?: Ingredients;
   succeeded: boolean;
 };
 

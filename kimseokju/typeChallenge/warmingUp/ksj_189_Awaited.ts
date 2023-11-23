@@ -1,0 +1,3 @@
+// 189・Awaited
+// 별 백만개 답을 봐도 모르겠싐...
+type MyAwaited<T> = T extends Promise<infer K> ? K : never;
