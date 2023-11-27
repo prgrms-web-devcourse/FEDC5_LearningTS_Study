@@ -32,6 +32,8 @@ console.log(vari)
 vari에 할당되는 타입이 'a'일까 아니면 string일까에 대한 의문이였는데
 a가 할당된다. 그렇다면 여기서 'a'가 아닌 string에 할당되게 하려면?
 
+typeof를 적용해볼까 했지만 동적으로 변경될 수 있어서 안된다. 에러코드가 난다.
+
 아래와 같이 간단하게 string으로 해줘도 되지만
 type First<T extends any[]> = T extends [] ? never : string;
 
