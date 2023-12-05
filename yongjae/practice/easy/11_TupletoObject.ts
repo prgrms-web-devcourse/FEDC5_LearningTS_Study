@@ -20,7 +20,11 @@
 
 /* _____________ 여기에 코드 입력 _____________ */
 
-type TupleToObject<T extends readonly (string | number | symbol)[]> = {
+// type TupleToObject<T extends readonly (string | number | symbol)[]> = {
+//   [P in T[number]]: P; 
+// }
+
+type TupleToObject<T extends readonly PropertyKey[]> = {
   [P in T[number]]: P; 
 }
 
