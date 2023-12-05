@@ -20,7 +20,7 @@
 
 /* _____________ 여기에 코드 입력 _____________ */
 
-type TupleToObject<T extends readonly any[]> = {
+type TupleToObject<T extends readonly PropertyKey[]> = {
   [key in T[number]]: key
 }
 
@@ -33,6 +33,7 @@ const sym1 = Symbol(1)
 const sym2 = Symbol(2)
 const tupleSymbol = [sym1, sym2] as const
 const tupleMix = [1, '2', 3, '4', sym1] as const
+
 
 type cases = [
   Expect<Equal<TupleToObject<typeof tuple>, { tesla: 'tesla'; 'model 3': 'model 3'; 'model X': 'model X'; 'model Y': 'model Y' }>>,

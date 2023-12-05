@@ -22,8 +22,8 @@
 
 /* _____________ 여기에 코드 입력 _____________ */
 
-type MyAwaited<T> = T extends Promise<infer U>
-  ? U extends Promise<any>
+type MyAwaited<T extends PromiseLike<any>> = T extends PromiseLike<infer U>
+  ? U extends PromiseLike<any>
     ? MyAwaited<U>
     : U
   : never
