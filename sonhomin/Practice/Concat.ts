@@ -18,40 +18,28 @@
 
 /* _____________ 여기에 코드 입력 _____________ */
 
-type Concat<
-  T extends readonly any[],
-  U extends readonly any[]
-> = [...T, ...U];
+type Concat<T extends readonly any[], U extends readonly any[]> = [...T, ...U];
 
 /* _____________ 테스트 케이스 _____________ */
-import type {
-  Equal,
-  Expect,
-} from "@type-challenges/utils";
+import type { Equal, Expect } from '@type-challenges/utils';
 
-const tuple = [1];
+const tuple = [1] as const;
+
+// number[]
+
+// [1]
 
 type cases = [
   Expect<Equal<Concat<[], []>, []>>,
   Expect<Equal<Concat<[], [1]>, [1]>>,
+  Expect<Equal<Concat<typeof tuple, typeof tuple>, [1, 1]>>,
+  Expect<Equal<Concat<[1, 2, 3], [3, 4]>, [1, 2, 3, 3, 4]>>,
   Expect<
     Equal<
-      Concat<typeof tuple, typeof tuple>,
-      [1, 1]
+      Concat<['1', 2, '3'], [false, boolean, '4']>,
+      ['1', 2, '3', false, boolean, '4']
     >
   >,
-  Expect<
-    Equal<Concat<[1, 2], [3, 4]>, [1, 2, 3, 4]>
-  >,
-  Expect<
-    Equal<
-      Concat<
-        ["1", 2, "3"],
-        [false, boolean, "4"]
-      >,
-      ["1", 2, "3", false, boolean, "4"]
-    >
-  >
 ];
 
 // @ts-expect-error

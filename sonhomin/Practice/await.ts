@@ -25,29 +25,23 @@
 // 실제 함수 만들 때 많이 사용하는 타입이다.
 // 콜백함수가 일반 함수 vs 비동기 함수냐에 따라 타이핑 해야할 때 사용.
 
-type MyAwaited<T extends PromiseLike<any>> =
-  T extends PromiseLike<infer K>
-    ? K extends Promise<infer Q>
-      ? MyAwaited<K>
-      : K
-    : never;
+type MyAwaited<T extends PromiseLike<any>> = T extends PromiseLike<
+  infer K
+>
+  ? K extends Promise<any>
+    ? MyAwaited<K>
+    : K
+  : never;
 
 /* _____________ 테스트 케이스 _____________ */
-import type {
-  Equal,
-  Expect,
-} from "@type-challenges/utils";
+import type { Equal, Expect } from "@type-challenges/utils";
 
 type X = Promise<string>;
 type Y = Promise<{ field: number }>;
 type Z = Promise<Promise<string | number>>;
-type Z1 = Promise<
-  Promise<Promise<string | boolean>>
->;
+type Z1 = Promise<Promise<Promise<string | boolean>>>;
 type T = {
-  then: (
-    onfulfilled: (arg: number) => any
-  ) => any;
+  then: (onfulfilled: (arg: number) => any) => any;
 };
 
 // T 는 Promise<number>((resolve) => any)

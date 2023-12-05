@@ -24,30 +24,14 @@ type MyExclude<T, U> = T extends U ? never : T;
 // 확장되면 never반환.
 
 /* _____________ 테스트 케이스 _____________ */
-import type {
-  Equal,
-  Expect,
-} from "@type-challenges/utils";
+import type { Equal, Expect } from "@type-challenges/utils";
 
 type cases = [
+  Expect<Equal<MyExclude<"a" | "b" | "c", "a">, "b" | "c">>,
+  Expect<Equal<MyExclude<"a" | "b" | "c", "a" | "b">, "c">>,
   Expect<
     Equal<
-      MyExclude<"a" | "b" | "c", "a">,
-      "b" | "c"
-    >
-  >,
-  Expect<
-    Equal<
-      MyExclude<"a" | "b" | "c", "a" | "b">,
-      "c"
-    >
-  >,
-  Expect<
-    Equal<
-      MyExclude<
-        string | number | (() => void),
-        Function
-      >,
+      MyExclude<string | number | (() => void), Function>,
       string | number
     >
   >

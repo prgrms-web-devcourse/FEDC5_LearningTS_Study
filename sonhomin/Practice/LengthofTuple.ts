@@ -22,21 +22,12 @@
 
 /* _____________ 여기에 코드 입력 _____________ */
 
-type Length<T extends readonly any[]> =
-  T["length"];
+type Length<T extends readonly any[]> = T["length"];
 
 /* _____________ 테스트 케이스 _____________ */
-import type {
-  Equal,
-  Expect,
-} from "@type-challenges/utils";
+import type { Equal, Expect } from "@type-challenges/utils";
 
-const tesla = [
-  "tesla",
-  "model 3",
-  "model X",
-  "model Y",
-] as const;
+const tesla = ["tesla", "model 3", "model X", "model Y"] as const;
 const spaceX = [
   "FALCON 9",
   "FALCON HEAVY",

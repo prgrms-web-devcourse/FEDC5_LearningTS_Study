@@ -22,22 +22,14 @@
 
 // T[number]는 T의 모든 요소를 유니언으로 반환한다.
 
-type TupleToObject<T extends readonly any[]> = {
+type TupleToObject<T extends readonly PropertyKey[]> = {
   [P in T[number]]: P;
 };
 
 /* _____________ 테스트 케이스 _____________ */
-import type {
-  Equal,
-  Expect,
-} from "@type-challenges/utils";
+import type { Equal, Expect } from "@type-challenges/utils";
 
-const tuple = [
-  "tesla",
-  "model 3",
-  "model X",
-  "model Y",
-] as const;
+const tuple = ["tesla", "model 3", "model X", "model Y"] as const;
 const tupleNumber = [1, 2, 3, 4] as const;
 const sym1 = Symbol(1);
 const sym2 = Symbol(2);
@@ -58,6 +50,7 @@ type cases = [
   >,
   Expect<
     Equal<
+      //[1,2,3,4]
       TupleToObject<typeof tupleNumber>,
       { 1: 1; 2: 2; 3: 3; 4: 4 }
     >
@@ -84,6 +77,7 @@ type cases = [
 
 // @ts-expect-error
 type error = TupleToObject<[[1, 2], {}]>;
+// 에러가발생하는 이유는 배열과 객체는 프로퍼티 키로 사용할 수 없기 때문이다.
 
 //number
 
