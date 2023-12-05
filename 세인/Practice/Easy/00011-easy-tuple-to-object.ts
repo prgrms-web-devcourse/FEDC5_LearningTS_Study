@@ -51,6 +51,8 @@ type cases = [
 
 // @ts-expect-error
 type error = TupleToObject<[[1, 2], {}]>
+// 왜? 통과가 될까?? 
+// {}가 PropertyKey로 사용될 수 없다는 이유로 타입 에러가 발생
 
 /* _____________ 다음 단계 _____________ */
 /*

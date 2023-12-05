@@ -26,6 +26,8 @@ type Length<T extends readonly any[]> = T['length']
 
 /*
 - T 배열의 length 속성에 접근하여 배열의 길이 가져온다. 
+- 인덱스 타입 쿼리(Index type query)
+- 제네릭 타입 T의 속성 중에 'length'라는 속성의 타입을 가져오는 것
 */
 
 /* _____________ 테스트 케이스 _____________ */

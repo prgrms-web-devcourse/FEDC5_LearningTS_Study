@@ -23,6 +23,7 @@ type MyExclude<T, U> = U extends T ? T : never;
 /* 
 - U에 속하지 않는 T의 부분집합을 나타낸다
 - U가 T에 할당 가능하다면, T 타입이 반환된다. 
+- 집합개념
 */
 /* _____________ 테스트 케이스 _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'

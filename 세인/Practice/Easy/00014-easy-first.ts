@@ -26,7 +26,13 @@ type First<T extends any[]> = T extends [infer A, ...infer rest] ? A : never;
 
 /*
 - [infer A, ...infer rest]: 첫번째 요소를 A에, 나머지 요소들을 rest에 할당
-- ?????
+- 배열의 첫 번째 element를 A로 추론 나머지는 rest로 추론
+- element가 없으면 infer A 실패 never
+- infer A 빼고 [..infer rest] 로만 검증하면 마찬가지로 []도 항상 참
+- 위 코드는 명시적으로 구현한 좋은 코드!
+- type First<T extends any[]> - T extends [] > never : T[0] (묵시적)
+- type First<T extends any[]> - T['length'] extends 0 ? never : T[0] (야매ㅋㅋ)
+- never: A 보다 A : never로 나오는 게 좋다! common한 타입이 더 먼저나오는 게 깔끔
 */
 
 /* _____________ 테스트 케이스 _____________ */
