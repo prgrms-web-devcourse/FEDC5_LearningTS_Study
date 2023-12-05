@@ -4,6 +4,8 @@
 // type Length<T extends any[]> = T["length"];
 
 type Length<T extends readonly any[]> = T["length"];
+// T가 배열 객체이니까 그 안에 length 속성에 적용한다.
+// [].length << 제네릭에도 적용이 가능하다!
 
 /*
   일단 문제의 의도를 잘 맞춰서 기분 좋았던 문제

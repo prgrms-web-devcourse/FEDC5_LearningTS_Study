@@ -7,6 +7,11 @@
 // 그래서 그거 보고 바꿨다.
 type First<T extends any[]> = T extends [] ? never : T[0];
 
+// 0이 아니면 never를 반환해라
+// 제가 푼건 묵시적인 방법
+// length는 야매
+// 가장 합당한 코드는?
+
 /*
   // 예제를 통한 해석을 해보자 
   type arr1 = ['a', 'b', 'c']
@@ -20,7 +25,7 @@ type First<T extends any[]> = T extends [] ? never : T[0];
 type arr1 = ['a', 'b', 'c']
 type arr2 = [3, 2, 1]
 
-type head1 = First<arr1> // expected to be 'a'
+type head1 = First<arr1> // expected to be 'a' << 'a' 
 type head2 = First<arr2> // expected to be 3
 
 type First<T extends any[]> = T extends [] ? never : T[0];
@@ -44,4 +49,9 @@ type First<T extends any[]> = T extends [] ? never : (T[0] extends string ? stri
 TypeScript에서는 타입스크립트의 타입 시스템이 런타임에 있는 값의 타입에 접근하는 것을 지원하지 않는다. 
 컴파일러는 T[0]의 타입이 무엇인지 알 수 있지만, 우리는 이 정보에 접근할 수 없다..
 
+만약에 string을 사용하고 싶다면 js 런타임상에서는 가능할수도..? << 데이터가 들어왔을 때 첫 요소를 검사?
+TS에서는 불가능하다.
+
 */
+
+const a = 123; // <<
