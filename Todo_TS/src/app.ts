@@ -1,7 +1,6 @@
 import "./style.css";
+import type { ParamsType } from "./components/Utils/TypeDeclare.ts";
 
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
-  <div>
-    <h1>Vite + TypeScript</h1>
-  </div>
-`;
+export default function App({ $target }: ParamsType) {
+  console.log($target);
+}
