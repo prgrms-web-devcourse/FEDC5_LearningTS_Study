@@ -1,0 +1,15 @@
+{
+  "name": "fedc5_learningts_study",
+  "version": "1.0.0",
+  "description": "[러닝 타입스크립트](https://www.yes24.com/Product/Goods/116585556)로 타입스크립트 뿌시기 !",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
