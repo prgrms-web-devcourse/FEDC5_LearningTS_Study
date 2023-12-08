@@ -1,4 +1,5 @@
 import type { HeaderParamsType } from "../Utils/TypeDeclare.ts";
+
 const Header = ({ $target, text }: HeaderParamsType) => {
   const $header = document.createElement("h1");
 
