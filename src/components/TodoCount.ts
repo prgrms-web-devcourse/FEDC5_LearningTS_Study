@@ -1,23 +1,28 @@
-import validation from "../utils/validation.js";
+import { TodoCount as TodoCnt } from "../types/todo.js";
 
-export default function TodoCount({ $target, initialCount }) {
-  validation.newTarget(new.target);
+export default class TodoCount {
+  $container = document.createElement("div");
+  state: TodoCnt;
 
-  const $container = document.createElement("div");
-  $target.appendChild($container);
+  constructor(
+    private readonly $target: HTMLElement,
+    private readonly initialCount: TodoCnt
+  ) {
+    this.$target.appendChild(this.$container);
 
-  if (initialCount.total) {
-    this.state = initialCount;
-  } else this.state = { total: 0, done: 0 };
+    if (this.initialCount.total) {
+      this.state = this.initialCount;
+    } else this.state = { total: 0, done: 0 };
 
-  this.setState = (nextState) => {
+    this.render();
+  }
+
+  setState(nextState: TodoCnt) {
     this.state = nextState;
     this.render();
   };
 
-  this.render = () => {
-    $container.textContent = `완료 ${this.state.done}개 / 총 ${this.state.total}개`;
+  render() {
+    this.$container.textContent = `완료 ${this.state.done}개 / 총 ${this.state.total}개`;
   };
-
-  this.render();
 }

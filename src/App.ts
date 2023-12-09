@@ -7,7 +7,7 @@ import { TodoCount as TodoCnt, TodoItem } from "./types/todo.js";
 
 export default class App {
   todoList: TodoList;
-  // todoCount: TodoCount;
+  todoCount: TodoCount;
 
   constructor(
     protected readonly $target: HTMLElement,
@@ -30,10 +30,7 @@ export default class App {
       (state: TodoItem[]) => this.updateCount(state)
     );
 
-    // this.todoCount = new TodoCount({
-    //   $target: this.$target,
-    //   initialCount: this.initialCount,
-    // });
+    this.todoCount = new TodoCount(this.$target, this.initialCount);
   }
 
   // 카운트 업데이트
