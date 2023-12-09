@@ -6,7 +6,6 @@ const InputBox = ({ $target, onSubmit }: InputParamsType) => {
   if ($target) $target.appendChild($form);
 
   const render = () => {
-    console.log(`렌더링 됨`);
     let isInit = false;
     $form.innerHTML = `
      <input type="text" name="todo" placeholder="할 일을 입력하세요!"/>
