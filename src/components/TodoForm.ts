@@ -1,7 +1,7 @@
 
 export default class TodoForm {
-  $form = document.createElement("form");
-  isInit = false;
+  private readonly $form = document.createElement("form");
+  private isInit = false;
 
   constructor(
     private readonly $target: HTMLElement,
@@ -11,7 +11,7 @@ export default class TodoForm {
     this.render();
   }
 
-  render() {
+  private render() {
     this.$form.innerHTML = `
       <input type="text" placeholder="할 일을 입력하세요" name="todo" />
       <button>추가</button>

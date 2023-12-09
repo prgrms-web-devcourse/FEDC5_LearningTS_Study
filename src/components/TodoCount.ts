@@ -1,8 +1,8 @@
 import { TodoCount as TodoCnt } from "../types/todo.js";
 
 export default class TodoCount {
-  $container = document.createElement("div");
-  state: TodoCnt;
+  private readonly $container = document.createElement("div");
+  private state: TodoCnt;
 
   constructor(
     private readonly $target: HTMLElement,
@@ -22,7 +22,7 @@ export default class TodoCount {
     this.render();
   };
 
-  render() {
+  private render() {
     this.$container.textContent = `완료 ${this.state.done}개 / 총 ${this.state.total}개`;
   };
 }

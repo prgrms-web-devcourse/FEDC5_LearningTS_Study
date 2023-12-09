@@ -1,5 +1,5 @@
 export default class Header {
-  $header = document.createElement("h1");
+  private readonly $header = document.createElement("h1");
 
   constructor(
     private readonly $target: HTMLElement,
@@ -9,7 +9,7 @@ export default class Header {
     this.render();
   };
 
-  render() {
+  private render() {
     this.$header.textContent = this.text;
   }
 };

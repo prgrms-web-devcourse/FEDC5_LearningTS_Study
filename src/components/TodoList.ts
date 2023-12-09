@@ -4,7 +4,7 @@ import { TodoItem } from "../types/todo.js";
 
 export default class TodoList {
   state: TodoItem[] = [];
-  $todoList = document.createElement("div");
+  private readonly $todoList = document.createElement("div");
 
   constructor(
     private readonly $target: HTMLElement,
@@ -51,7 +51,7 @@ export default class TodoList {
     this.render();
   };
 
-  render() {
+  private render() {
     this.$todoList.innerHTML = `
       <ul>
         ${this.state
