@@ -1,4 +1,4 @@
-import validation from "../utils/validation.js";
+import validation from "../util/validation.js";
 
 export default function Header({ $target, text }) {
   validation.newTarget(new.target);

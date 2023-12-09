@@ -1,5 +1,5 @@
 import App from "./App.js";
-import { getItem } from "./utils/storage.js";
+import { getItem } from "./util/storage.js";
 
 const initialState = getItem("todo", []);
 const initialCount = getItem("count", { total: 0, done: 0 });

@@ -1,5 +1,5 @@
-import { setItem } from "../utils/storage.js";
-import validation from "../utils/validation.js";
+import { setItem } from "../util/storage.js";
+import validation from "../util/validation.js";
 
 // params.$target - 해당 컴포넌트가 추가될 DOM 앨리먼트
 // params.initialState - 해당 컴포넌트의 초기 상태
@@ -24,17 +24,16 @@ export default function TodoList({ $target, initialState, updateCount }) {
     $todoList.innerHTML = `
       <ul>
         ${this.state
-          .map(
-            ({ text, isCompleted }, index) => `
-              <li data-index=${index} class="todoList ${
-                isCompleted ? "completed" : ""
-              }">
+        .map(
+          ({ text, isCompleted }, index) => `
+              <li data-index=${index} class="todoList ${isCompleted ? "completed" : ""
+            }">
                 ${text}
                 <button class="deleteBtn">삭제</button>
               </li>
             `
-          )
-          .join("")}
+        )
+        .join("")}
       </ul>
     `;
   };
