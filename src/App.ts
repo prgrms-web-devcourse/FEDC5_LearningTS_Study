@@ -6,7 +6,7 @@ import { setItem } from "./utils/storage.js";
 import { TodoCount as TodoCnt, TodoItem } from "./types/todo.js";
 
 export default class App {
-  // todoList: TodoList;
+  todoList: TodoList;
   // todoCount: TodoCount;
 
   constructor(
@@ -24,11 +24,11 @@ export default class App {
     //   },
     // });
 
-    // this.todoList = new TodoList({
-    //   $target: this.$target,
-    //   initialState: this.initialState,
-    //   updateCount: (state: TodoItem[]) => this.updateCount(state),
-    // });
+    this.todoList = new TodoList(
+      this.$target,
+      this.initialState,
+      (state: TodoItem[]) => this.updateCount(state)
+    );
 
     // this.todoCount = new TodoCount({
     //   $target: this.$target,
@@ -37,10 +37,10 @@ export default class App {
   }
 
   // 카운트 업데이트
-  // updateCount(todoList: TodoItem[]) {
-  // const done = todoList.filter((todo) => todo.isCompleted).length;
-  // const nextState = { total: todoList.length, done };
-  // this.todoCount.setState(nextState);
-  // setItem("count", JSON.stringify(nextState));
-  // };
+  updateCount(todoList: TodoItem[]) {
+    // const done = todoList.filter((todo) => todo.isCompleted).length;
+    // const nextState = { total: todoList.length, done };
+    // this.todoCount.setState(nextState);
+    // setItem("count", JSON.stringify(nextState));
+  };
 }

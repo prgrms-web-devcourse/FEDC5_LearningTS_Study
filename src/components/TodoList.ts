@@ -1,27 +1,58 @@
 import { setItem } from "../utils/storage.js";
 import validation from "../utils/validation.js";
+import { TodoItem } from "../types/todo.js";
 
-// params.$target - 해당 컴포넌트가 추가될 DOM 앨리먼트
-// params.initialState - 해당 컴포넌트의 초기 상태
-export default function TodoList({ $target, initialState, updateCount }) {
-  validation.newTarget(new.target);
+export default class TodoList {
+  state: TodoItem[] = [];
+  $todoList = document.createElement("div");
 
-  const $todoList = document.createElement("div");
-  $target.appendChild($todoList);
+  constructor(
+    private readonly $target: HTMLElement,
+    private readonly initialState: TodoItem[],
+    private readonly updateCount: (state: TodoItem[]) => void
+  ) {
+    this.$target.appendChild(this.$todoList);
 
-  if (Array.isArray(initialState)) this.state = initialState;
-  else this.state = [];
+    if (Array.isArray(this.initialState)) this.state = this.initialState;
+    else this.state = [];
 
-  this.setState = (nextState) => {
+    this.render();
+
+    this.$todoList.addEventListener("click", (e) => {
+      const target = e.target as HTMLLIElement;
+      const $li = target.closest("li");
+
+      if ($li) {
+        const newState = [...this.state];
+        const index = +($li.dataset.index as string);
+
+        if (target.className === "deleteBtn") {
+          newState.splice(index, 1);
+          this.setState(newState);
+        } else if (target.className.includes("todoList")) {
+          const isCompleted = target.className.includes("completed");
+          if (isCompleted) target.classList.remove("completed");
+          else target.classList.add("completed");
+          newState[index] = {
+            ...newState[index],
+            isCompleted: !isCompleted,
+          };
+          this.setState(newState);
+        }
+      }
+    });
+  }
+
+  setState(nextState: TodoItem[]) {
     const newState = validation.state(nextState);
     this.state = newState;
     setItem("todo", JSON.stringify(newState));
-    updateCount(newState);
+    this.updateCount(newState);
     this.render();
   };
 
-  this.render = () => {
-    $todoList.innerHTML = `
+  render() {
+    this.$todoList.innerHTML = `
       <ul>
         ${this.state
         .map(
@@ -37,32 +68,4 @@ export default function TodoList({ $target, initialState, updateCount }) {
       </ul>
     `;
   };
-
-  $todoList.addEventListener("click", (e) => {
-    const { target } = e;
-    const $li = target.closest("li");
-
-    if ($li) {
-      const newState = [...this.state];
-      const { index } = $li.dataset;
-
-      if (target.className === "deleteBtn") {
-        newState.splice(index, 1);
-        this.setState(newState);
-      } else if (target.className.includes("todoList")) {
-        const isCompleted = target.className.includes("completed");
-
-        if (isCompleted) target.classList.remove("completed");
-        else target.classList.add("completed");
-
-        newState[index] = {
-          ...newState[index],
-          isCompleted: !isCompleted,
-        };
-        this.setState(newState);
-      }
-    }
-  });
-
-  this.render();
 }
