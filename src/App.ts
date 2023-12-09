@@ -35,9 +35,9 @@ export default class App {
 
   // 카운트 업데이트
   updateCount(todoList: TodoItem[]) {
-    // const done = todoList.filter((todo) => todo.isCompleted).length;
-    // const nextState = { total: todoList.length, done };
-    // this.todoCount.setState(nextState);
-    // setItem("count", JSON.stringify(nextState));
+    const done = todoList.filter((todo) => todo.isCompleted).length;
+    const nextState = { total: todoList.length, done };
+    this.todoCount.setState(nextState);
+    setItem("count", JSON.stringify(nextState));
   };
 }
