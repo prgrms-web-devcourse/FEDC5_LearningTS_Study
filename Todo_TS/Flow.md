@@ -12,7 +12,7 @@ Rule<br />
 
 ---
 
-## 23.12.09 00:00
+## 2023.12.09 0000
 
 ### main.ts new 키워드 문제 해결
 
@@ -32,4 +32,46 @@ const Header = ({ $target, text }: HeaderParamsType) => {
 
 export { Header };
 
+```
+
+## 2023.12.09 1330
+
+### initialState를 정의하던 중 만약 리스트가 없는 경우?
+
+타입을 정의하던 중 만약 투두리스트가 없다면 [] 형태로 initialState가 들어온다는 것을 확인했다. 이때 any[]를 써야하는데 이러면 다른 값에 대한 처리가 불분명해지지 않나?
+
+```ts
+export type StateType = EachStateType[];
+
+export type EachStateType = {
+  text: string;
+  isCompleted: boolean;
+};
+
+export type TodoListParamsType = {
+  $target: HTMLElement | null;
+  initialState: StateType | any[];
+  toggleCheck: (id: number) => void;
+  removeFunction: (id: number) => void;
+};
+```
+
+### const = () => 함수 표현식에서의 의문점
+
+코드 주석 내부에서 서술
+
+```ts
+// App.ts에서 아래 함수를 실행하면 TodoList내부의 state가 바뀐다.
+// 심지어 바뀌는 것을 console.log로 확인했는데
+// 막상 데이터를 또 갱신하면 해당 데이터가 올바로 갱신되지 않는 현상이 있었다.
+todoList.setState(nextState);
+
+// 결론부터 서술하면
+// 아래와 같이 todoList.state를 직접 바꿔줬어야했다.
+// 근데 이러면 setState의 개념이 모호해지는 문제가 생긴다 => 렌더핸들러 정도로 바꾸면 좋을 것 같고
+// 그리고 왜 이런 현상이 나타나는지 정확하게 이해하지 못했다.
+todoList.setState(nextState);
+todoList.state = nextState;
+// `추측`을 해보자면 new의 개념이 아닌 기존에 가져왔던 todoList의 최초 initialState가 바뀌지 않는 부분과 연관있을 것 같은데
+// 자세히는 모르겠다.
 ```
