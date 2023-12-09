@@ -3,6 +3,7 @@ import { Header } from "./components/Header/Header";
 import { InputBox } from "./components/InputBox/InputBox";
 import { TodoList } from "./components/TodoList/TodoList.ts";
 import { TodoCount } from "./components/TodoCount/TodoCount.ts";
+import { setItem } from "./components/Utils/Storage.ts";
 import type { MainParamsType } from "./components/Utils/TypeDeclare.ts";
 
 const App = ({ $target, initialState }: MainParamsType) => {
@@ -24,7 +25,7 @@ const App = ({ $target, initialState }: MainParamsType) => {
     todoList.setState(nextState);
     todoList.state = nextState;
     console.log(todoList.state);
-    // setItem("todos", JSON.stringify(nextState));
+    setItem("todos", JSON.stringify(nextState));
     todoCount.setState(nextState);
   };
   const toggleCheck = (id: number) => {
@@ -36,7 +37,7 @@ const App = ({ $target, initialState }: MainParamsType) => {
     todoList.setState(nextState);
     todoList.state = nextState;
     console.log(todoList.state);
-    // setItem("todos", JSON.stringify(nextState));
+    setItem("todos", JSON.stringify(nextState));
     todoCount.setState(nextState);
   };
 
@@ -50,7 +51,7 @@ const App = ({ $target, initialState }: MainParamsType) => {
       .filter((element) => element != undefined);
     todoList.setState(nextState);
     todoList.state = nextState;
-    // setItem("todos", JSON.stringify(nextState));
+    setItem("todos", JSON.stringify(nextState));
     todoCount.setState(nextState);
   };
 
