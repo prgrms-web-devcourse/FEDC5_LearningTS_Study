@@ -19,8 +19,8 @@ const TodoList = ({ $target, initialState, toggleCheck, removeFunction }: TodoLi
                   ${state
                     .map(
                       ({ text, isCompleted }, index) =>
-                        `<li id=${index} style=${
-                          isCompleted ? "text-Decoration:line-through" : "text-Decoration:none"
+                        `<li id=${index} style=${isCompleted ? "color:#aaa;" : ""}${
+                          isCompleted ? "text-decoration:line-through" : "text-decoration:none"
                         }><button>delete</button>${text}</li>`
                     )
                     .join("")}

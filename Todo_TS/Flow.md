@@ -83,7 +83,7 @@ todoList.state = nextState;
 추후 희망구현사항 체크리스트
 
 - [x] initialState의 any로 선언된 부분 any키워드가 아닌 것으로 수정하기
-- [ ] scss를 활용한 css 전처리 과정 설정
+- [x] scss를 활용한 css 전처리 과정 설정
 - [ ] Babel 세팅
 - [ ] Jest를 통한 테스트 과정 추가
 - [ ] 해야할 일, 다 한 일, 전체 필터링 기능 추가
