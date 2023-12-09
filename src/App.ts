@@ -5,36 +5,41 @@ import TodoCount from "./components/TodoCount.js";
 import { setItem } from "./utils/storage.js";
 import { TodoCount as TodoCnt, TodoItem } from "./types/todo.js";
 
-export default function App({ $target, initialState, initialCount }) {
-  new Header({
-    $target,
-    text: "Todo List",
-  });
+export default class App {
+  // todoList: TodoList;
+  // todoCount: TodoCount;
 
-  new TodoForm({
-    $target,
-    onSubmit: (text) => {
-      const nextState = [...todoList.state, { text, isCompleted: false }];
-      todoList.setState(nextState);
-    },
-  });
+  constructor(
+    protected readonly $target: HTMLElement,
+    protected readonly initialState: TodoItem[],
+    protected readonly initialCount: TodoCnt
+  ) {
 
-  const todoList = new TodoList({
-    $target,
-    initialState,
-    updateCount: (state) => updateCount(state),
-  });
+    // new TodoForm({
+    //   $target: this.$target,
+    //   onSubmit: (text: string) => {
+    //     const nextState = [...this.todoList.state, { text, isCompleted: false }];
+    //     this.todoList.setState(nextState);
+    //   },
+    // });
 
-  const todoCount = new TodoCount({
-    $target,
-    initialCount,
-  });
+    // this.todoList = new TodoList({
+    //   $target: this.$target,
+    //   initialState: this.initialState,
+    //   updateCount: (state: TodoItem[]) => this.updateCount(state),
+    // });
+
+    // this.todoCount = new TodoCount({
+    //   $target: this.$target,
+    //   initialCount: this.initialCount,
+    // });
+  }
 
   // 카운트 업데이트
-  const updateCount = (todoList) => {
-    const done = todoList.filter((todo) => todo.isCompleted).length;
-    const nextState = { total: todoList.length, done };
-    todoCount.setState(nextState);
-    setItem("count", JSON.stringify(nextState));
-  };
+  // updateCount(todoList: TodoItem[]) {
+  // const done = todoList.filter((todo) => todo.isCompleted).length;
+  // const nextState = { total: todoList.length, done };
+  // this.todoCount.setState(nextState);
+  // setItem("count", JSON.stringify(nextState));
+  // };
 }
