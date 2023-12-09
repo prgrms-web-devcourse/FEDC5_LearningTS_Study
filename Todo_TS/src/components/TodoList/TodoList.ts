@@ -18,7 +18,6 @@ const TodoList = ({ $target, initialState, toggleCheck, removeFunction }: TodoLi
 
   const render = () => {
     console.log(`rendered!`, state);
-    $todoList.innerHTML = ``;
     $todoList.innerHTML = `
               <ul>
                   ${state

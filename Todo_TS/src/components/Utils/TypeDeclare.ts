@@ -26,3 +26,5 @@ export type TodoListParamsType = {
   toggleCheck: (id: number) => void;
   removeFunction: (id: number) => void;
 };
+
+export type TodoCount = MainParamsType;
