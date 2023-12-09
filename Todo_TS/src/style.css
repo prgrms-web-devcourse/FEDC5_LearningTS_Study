@@ -22,22 +22,26 @@ button {
 
 form {
   margin: 5px;
-  height: 40px;
+  height: 60px;
   display: flex;
   flex: 1;
   justify-content: center;
 }
 form input {
-  width: 220px;
+  padding: 0 90px 0 20px;
+  font-size: 32px;
+  background-color: #eee;
+  border-radius: 6px;
 }
-
-form > button {
-  width: 40px;
-  height: 40px;
+form input::placeholder {
+  color: #aaa;
 }
-
-form > button:hover {
-  box-shadow: 40px 0 0 0 rgba(0, 0, 0, 0.5) inset;
+form button {
+  width: 60px;
+  height: 60px;
+}
+form button:hover {
+  box-shadow: 60px 0 0 0 rgba(0, 0, 0, 0.5) inset;
 }
 
 ul {
@@ -49,12 +53,10 @@ ul {
 li {
   margin-top: 20px;
 }
-
-li > button {
+li button {
   margin-right: 5px;
 }
-
-li > button:hover {
+li button:hover {
   box-shadow: 55px 0 0 0 rgba(0, 0, 0, 0.5) inset;
 }
 
