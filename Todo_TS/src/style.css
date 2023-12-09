@@ -9,8 +9,23 @@ h1 {
   display: flex;
   justify-content: center;
   color: #eee;
+  animation: breathing 3s ease-out infinite normal;
 }
 
+@keyframes breathing {
+  0% {
+    transform: scale(0.9);
+  }
+  35% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
 button {
   border-radius: 5px;
   box-sizing: border-box;
@@ -49,14 +64,15 @@ ul {
   padding-left: 0;
   margin-left: 0;
 }
-
-li {
+ul li {
+  font-size: 24px;
   margin-top: 20px;
 }
-li button {
-  margin-right: 5px;
+ul li button {
+  font-size: 16px;
+  margin-right: 10px;
 }
-li button:hover {
+ul li button:hover {
   box-shadow: 55px 0 0 0 rgba(0, 0, 0, 0.5) inset;
 }
 
