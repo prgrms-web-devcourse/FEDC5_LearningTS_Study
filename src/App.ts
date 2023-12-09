@@ -1,8 +1,9 @@
-import Header from "./component/Header.js";
-import TodoForm from "./component/TodoForm.js";
-import TodoList from "./component/TodoList.js";
-import TodoCount from "./component/TodoCount.js";
-import { setItem } from "./util/storage.js";
+import Header from "./components/Header.js";
+import TodoForm from "./components/TodoForm.js";
+import TodoList from "./components/TodoList.js";
+import TodoCount from "./components/TodoCount.js";
+import { setItem } from "./utils/storage.js";
+import { TodoCount as TodoCnt, TodoItem } from "./types/todo.js";
 
 export default function App({ $target, initialState, initialCount }) {
   new Header({

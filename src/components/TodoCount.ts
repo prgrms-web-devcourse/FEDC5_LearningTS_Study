@@ -1,4 +1,4 @@
-import validation from "../util/validation.js";
+import validation from "../utils/validation.js";
 
 export default function TodoCount({ $target, initialCount }) {
   validation.newTarget(new.target);

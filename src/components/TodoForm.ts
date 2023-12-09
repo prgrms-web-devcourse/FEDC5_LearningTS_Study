@@ -1,4 +1,4 @@
-import validation from "../util/validation.js";
+import validation from "../utils/validation.js";
 
 export default function TodoForm({ $target, onSubmit }) {
   validation.newTarget(new.target);
