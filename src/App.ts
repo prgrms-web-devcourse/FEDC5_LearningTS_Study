@@ -16,13 +16,13 @@ export default class App {
   ) {
     new Header(this.$target, "Todo List");
 
-    // new TodoForm({
-    //   $target: this.$target,
-    //   onSubmit: (text: string) => {
-    //     const nextState = [...this.todoList.state, { text, isCompleted: false }];
-    //     this.todoList.setState(nextState);
-    //   },
-    // });
+    new TodoForm(
+      this.$target,
+      (text: string) => {
+        const nextState = [...this.todoList.state, { text, isCompleted: false }];
+        this.todoList.setState(nextState);
+      },
+    );
 
     this.todoList = new TodoList(
       this.$target,
