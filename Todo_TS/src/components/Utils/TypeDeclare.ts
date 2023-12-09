@@ -1,6 +1,6 @@
 export type MainParamsType = {
   $target: HTMLElement | null;
-  initialState: any[];
+  initialState: StateType;
 };
 
 export type HeaderParamsType = {
@@ -22,7 +22,7 @@ export type EachStateType = {
 
 export type TodoListParamsType = {
   $target: HTMLElement | null;
-  initialState: StateType | any[];
+  initialState: StateType;
   toggleCheck: (id: number) => void;
   removeFunction: (id: number) => void;
 };
