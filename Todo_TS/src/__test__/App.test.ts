@@ -1,7 +1,7 @@
 import { screen, fireEvent } from "@testing-library/dom";
 import "@testing-library/jest-dom";
-import { StateType } from "../components/Utils/TypeDeclare";
-import { App } from "../app";
+import { StateType } from "../components/Utils/TypeDeclare.ts";
+import { App } from "../app.ts";
 
 describe("App component", () => {
   test("renders with initial state", () => {

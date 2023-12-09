@@ -1,4 +1,4 @@
-import type { TodoCount, StateType } from "../Utils/TypeDeclare";
+import type { TodoCount, StateType } from "../Utils/TypeDeclare.ts";
 
 const TodoCount = ({ $target, initialState }: TodoCount) => {
   let state = initialState;

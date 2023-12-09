@@ -1,4 +1,4 @@
-import { InputParamsType } from "../Utils/TypeDeclare";
+import { InputParamsType } from "../Utils/TypeDeclare.ts";
 
 const InputBox = ({ $target, onSubmit }: InputParamsType) => {
   const $form = document.createElement("form");

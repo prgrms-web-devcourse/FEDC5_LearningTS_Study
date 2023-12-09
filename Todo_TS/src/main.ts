@@ -1,5 +1,5 @@
-import { App } from "./app";
-import { getItem } from "./components/Utils/Storage";
+import { App } from "./app.ts";
+import { getItem } from "./components/Utils/Storage.ts";
 
 const $app: HTMLElement | null = document.querySelector("#app");
 

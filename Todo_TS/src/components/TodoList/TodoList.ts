@@ -1,5 +1,5 @@
-import { validation } from "../Utils/Validation";
-import type { TodoListParamsType, StateType } from "../Utils/TypeDeclare";
+import { validation } from "../Utils/Validation.ts";
+import type { TodoListParamsType, StateType } from "../Utils/TypeDeclare.ts";
 
 const TodoList = ({ $target, initialState, toggleCheck, removeFunction }: TodoListParamsType) => {
   const $todoList = document.createElement("div");

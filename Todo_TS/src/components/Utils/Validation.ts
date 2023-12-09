@@ -1,4 +1,4 @@
-import type { StateType } from "./TypeDeclare";
+import type { StateType } from "./TypeDeclare.ts";
 
 const validation = (state: StateType) => {
   state.map((check: { text: string; isCompleted: boolean }) => {

@@ -1,6 +1,6 @@
 import "./style.css";
-import { Header } from "./components/Header/Header";
-import { InputBox } from "./components/InputBox/InputBox";
+import { Header } from "./components/Header/Header.ts";
+import { InputBox } from "./components/InputBox/InputBox.ts";
 import { TodoList } from "./components/TodoList/TodoList.ts";
 import { TodoCount } from "./components/TodoCount/TodoCount.ts";
 import { setItem } from "./components/Utils/Storage.ts";
