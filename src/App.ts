@@ -14,6 +14,7 @@ export default class App {
     protected readonly initialState: TodoItem[],
     protected readonly initialCount: TodoCnt
   ) {
+    new Header(this.$target, "Todo List");
 
     // new TodoForm({
     //   $target: this.$target,
