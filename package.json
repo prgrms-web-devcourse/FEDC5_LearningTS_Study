@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "start": "npx serve"
+    "start": "tsc && npx serve"
   },
   "devDependencies": {
     "tslint": "^6.1.3",
