@@ -1,23 +1,19 @@
+import { validation } from "../Utils/Validation";
 import type { TodoListParamsType, StateType } from "../Utils/TypeDeclare";
 
 const TodoList = ({ $target, initialState, toggleCheck, removeFunction }: TodoListParamsType) => {
-  //   if (!new.target) {
-  //     throw new TypeError("calling TodoList without new is invalid");
-  //   }
   const $todoList = document.createElement("div");
 
   if ($target) $target.appendChild($todoList);
   let state = initialState;
 
   const setState = (nextState: StateType) => {
-    // validation(nextState);
+    validation(nextState);
     state = nextState as StateType;
     render();
-    console.log(state);
   };
 
   const render = () => {
-    console.log(`rendered!`, state);
     $todoList.innerHTML = `
               <ul>
                   ${state
@@ -51,7 +47,6 @@ const TodoList = ({ $target, initialState, toggleCheck, removeFunction }: TodoLi
         }
       });
     });
-    console.log(`render end`, state);
   };
 
   render();

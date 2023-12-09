@@ -8,12 +8,8 @@ import { validation } from "./components/Utils/Validation.ts";
 import type { MainParamsType } from "./components/Utils/TypeDeclare.ts";
 
 const App = ({ $target, initialState }: MainParamsType) => {
-  // 임시 initialState 선언
-
   // App에서 사용되는 함수 선언부
   const onSubmit = (text: string) => {
-    console.log(text);
-
     const nextState = [
       ...todoList.state,
       {
@@ -21,30 +17,24 @@ const App = ({ $target, initialState }: MainParamsType) => {
         isCompleted: false,
       },
     ];
-    console.log(nextState);
     validation(nextState);
     todoList.setState(nextState);
     todoList.state = nextState;
-    console.log(todoList.state);
-    setItem("todos", JSON.stringify(nextState));
-    todoCount.setState(nextState);
-  };
-  const toggleCheck = (id: number) => {
-    console.log(id);
-    const nextState = todoList.state.map((val, index) => {
-      return index === id ? { ...val, isCompleted: !val.isCompleted } : val;
-    });
-    console.log(nextState);
-    todoList.setState(nextState);
-    todoList.state = nextState;
-    console.log(todoList.state);
     setItem("todos", JSON.stringify(nextState));
     todoCount.setState(nextState);
   };
 
-  // delete버튼을 누른 id의 li를 제거하는 함수
+  const toggleCheck = (id: number) => {
+    const nextState = todoList.state.map((val, index) => {
+      return index === id ? { ...val, isCompleted: !val.isCompleted } : val;
+    });
+    todoList.setState(nextState);
+    todoList.state = nextState;
+    setItem("todos", JSON.stringify(nextState));
+    todoCount.setState(nextState);
+  };
+
   const removeFunction = (id: number) => {
-    console.log(id);
     const nextState = todoList.state
       .filter((val, index) => {
         return index !== id ? val : 0;
