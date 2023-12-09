@@ -4,6 +4,7 @@ import { InputBox } from "./components/InputBox/InputBox";
 import { TodoList } from "./components/TodoList/TodoList.ts";
 import { TodoCount } from "./components/TodoCount/TodoCount.ts";
 import { setItem } from "./components/Utils/Storage.ts";
+import { validation } from "./components/Utils/Validation.ts";
 import type { MainParamsType } from "./components/Utils/TypeDeclare.ts";
 
 const App = ({ $target, initialState }: MainParamsType) => {
@@ -21,7 +22,7 @@ const App = ({ $target, initialState }: MainParamsType) => {
       },
     ];
     console.log(nextState);
-    // validation(nextState);
+    validation(nextState);
     todoList.setState(nextState);
     todoList.state = nextState;
     console.log(todoList.state);
