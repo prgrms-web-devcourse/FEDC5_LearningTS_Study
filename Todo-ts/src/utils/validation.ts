@@ -1,4 +1,4 @@
-import { StateArray, StateArrayItem } from './Type';
+import { StateArray, StateArrayItem } from '../globalTypes';
 
 export default function validation(state: StateArray) {
   // 불가능 값

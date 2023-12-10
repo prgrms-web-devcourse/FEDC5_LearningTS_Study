@@ -1,7 +1,7 @@
-import App from './App';
-import { QuerySelectItem } from './Type';
-import { storage } from './storage';
-import validation from './validation';
+import App from './components/App';
+import { QuerySelectItem } from './globalTypes';
+import { storage } from './utils/storage';
+import validation from './utils/validation';
 
 const $app: QuerySelectItem = document.querySelector('.app');
 
