@@ -19,6 +19,7 @@ h1 {
   font-size: 2rem;
   text-align: center;
   margin: 10px 0;
+  user-select: none;
 }
 
 /* 입력 폼 */
@@ -60,6 +61,7 @@ h1 {
   border-radius: 5px;
   cursor: pointer;
   box-sizing: border-box;
+  user-select: none;
 }
 
 .todoForm > button:hover {
@@ -99,6 +101,7 @@ h1 {
   font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
+  user-select: none;
 }
 
 .todoList li span:hover {
@@ -115,6 +118,7 @@ h1 {
   border: 0;
   border-radius: 5px;
   cursor: pointer;
+  user-select: none;
 }
 
 .todoList button:hover {
@@ -123,6 +127,7 @@ h1 {
 
 .completed {
   text-decoration: line-through;
+  color: lightgray;
 }
 
 /* TodoCount */
@@ -132,4 +137,5 @@ h1 {
   text-align: center;
   font-size: 1.2rem;
   font-weight: 700;
+  user-select: none;
 }

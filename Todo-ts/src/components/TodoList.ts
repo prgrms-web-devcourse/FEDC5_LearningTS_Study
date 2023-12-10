@@ -1,11 +1,18 @@
 // params.$target - 해당 컴포넌트가 추가가 될 DOM element
 // params.initialState - 해당 컴포넌트의 초기 상태
 
+import { StateArray } from '../globalTypes';
 import validation from '../utils/validation';
+
+interface TodoListParams {
+  $target: HTMLElement;
+  initialState: StateArray;
+  onClick: (clickedText: string, clickedId: string | undefined) => void;
+}
 
 export default function TodoList(
   this: any,
-  { $target, initialState, onClick }
+  { $target, initialState, onClick }: TodoListParams
 ) {
   // new 미사용 방어코드
   if (!new.target) {
@@ -20,7 +27,7 @@ export default function TodoList(
   // state 유효성 검사
   this.state = validation(initialState);
 
-  this.setState = (nextState) => {
+  this.setState = (nextState: StateArray) => {
     // state 유효성 검사
     this.state = validation(nextState);
 

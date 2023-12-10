@@ -14,7 +14,7 @@ export default function Header(this: any, { $target, text }: HeaderParams) {
   const $header: QuerySelectType<HTMLHeadingElement> =
     document.createElement('h1');
 
-  $target?.appendChild($header);
+  $target.appendChild($header);
 
   this.render = () => {
     $header.textContent = text;

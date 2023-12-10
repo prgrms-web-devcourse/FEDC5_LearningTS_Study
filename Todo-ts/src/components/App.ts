@@ -1,5 +1,4 @@
 import { NewFuncParams, StateArray } from '../globalTypes';
-import { $app } from '../main';
 import { storage } from '../utils/storage';
 import validation from '../utils/validation';
 import Header from './Header';
@@ -72,7 +71,7 @@ export default function App(
 
   // TodoCount
   const todoCount = new TodoCount({
-    $target: $app,
+    $target,
     initialState: this.state,
   });
 }

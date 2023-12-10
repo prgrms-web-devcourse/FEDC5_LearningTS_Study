@@ -1,6 +1,14 @@
 import { QuerySelectType } from '../globalTypes';
 
-export default function TodoForm(this: any, { $target, onSubmit }) {
+interface TodoFormParams {
+  $target: HTMLElement;
+  onSubmit: (text: string) => void;
+}
+
+export default function TodoForm(
+  this: any,
+  { $target, onSubmit }: TodoFormParams
+) {
   // new 미사용 방어코드
   if (!new.target) {
     throw new Error('new 키워드를 사용하여야 합니다.');
