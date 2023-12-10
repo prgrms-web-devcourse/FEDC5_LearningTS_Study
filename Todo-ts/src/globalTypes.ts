@@ -1,4 +1,4 @@
-export type QuerySelectItem = HTMLElement | null;
+export type QuerySelectType<T> = T | null;
 
 export type StateArray = StateArrayItem[];
 
@@ -8,6 +8,6 @@ export interface StateArrayItem {
 }
 
 export interface NewFuncParams {
-  $target: QuerySelectItem;
+  $target: HTMLElement;
   initialState: StateArray;
 }

@@ -1,9 +1,10 @@
 import App from './components/App';
-import { QuerySelectItem } from './globalTypes';
+import { QuerySelectType } from './globalTypes';
 import { storage } from './utils/storage';
 import validation from './utils/validation';
 
-const $app: QuerySelectItem = document.querySelector('.app');
+export const $app: QuerySelectType<HTMLElement> =
+  document.querySelector('.app');
 
 const initialState = storage.getItem('todos', []);
 
