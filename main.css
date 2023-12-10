@@ -1,0 +1,135 @@
+/* 전역 css */
+body {
+  font-size: 62.5%;
+  background-color: #fff2d8;
+  margin: 0;
+  padding: 10px;
+}
+
+main {
+  background-color: #ead7bb;
+  margin: 0 auto;
+  padding: 20px;
+  width: 90vw;
+  height: 90vh;
+}
+
+/* 제목 */
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin: 10px 0;
+}
+
+/* 입력 폼 */
+.todoForm {
+  display: flex;
+  width: 80%;
+  height: 10%;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0 auto;
+  background: #ead7bb;
+  justify-content: center;
+  align-items: center;
+}
+
+.todoForm > input {
+  margin: 5px auto;
+  padding: 10px;
+  width: 80%;
+  height: 70%;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border: 0;
+  border-radius: 5px;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+.todoForm > button {
+  margin: 5px auto;
+  text-align: center;
+  background: #113946;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  width: 15%;
+  height: 75%;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.todoForm > button:hover {
+  background: #267b97;
+}
+
+/* TodoList */
+.todoList {
+  width: 80%;
+  margin: 10px auto;
+}
+
+.todoList > ul {
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.todoList li {
+  display: flex;
+  list-style: none;
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  background: #bca37f;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.todoList li span {
+  margin: 0 auto;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.todoList li span:hover {
+  text-decoration: underline;
+  color: #fff2d8;
+}
+
+.todoList button {
+  padding: 5px 10px;
+  background: #113946;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.todoList button:hover {
+  background: #267b97;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+/* TodoCount */
+.todoCount {
+  width: 80%;
+  margin: 10px auto;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
