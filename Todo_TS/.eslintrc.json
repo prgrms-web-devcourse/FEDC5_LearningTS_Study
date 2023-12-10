@@ -1,0 +1,8 @@
+{
+  "extends": [
+    "eslint:recommended", //eslint 추천문법 적용
+    "plugin@typescript-eslint/recommend", //플러그인 연결, 추천문법적용
+    "plugin:prettier/recommend" //플러그인 연결, 추천문법적용
+  ],
+  "parser": "@typescirpt-eslint/parser"
+}
