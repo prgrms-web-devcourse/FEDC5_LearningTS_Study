@@ -7,7 +7,7 @@ const $app: QuerySelectItem = document.querySelector('.app');
 
 const initialState = storage.getItem('todos', []);
 
-new App({
+new (App as any)({
   $target: $app,
   initialState: validation(initialState),
 });

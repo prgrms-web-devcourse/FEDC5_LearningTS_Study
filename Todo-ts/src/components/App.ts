@@ -1,13 +1,8 @@
 import { NewFuncParams, StateArray } from '../globalTypes';
 import Header from './Header';
 
-interface NewApp {
-  state: StateArray;
-  setState: (nextState: StateArray) => void;
-}
-
 export default function App(
-  this: NewApp,
+  this: any,
   { $target, initialState }: NewFuncParams
 ) {
   // new 미사용 방어코드
