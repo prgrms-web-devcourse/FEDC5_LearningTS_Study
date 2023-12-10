@@ -50,7 +50,7 @@ export default function App(
   const todoList = new TodoList({
     $target,
     initialState: validation(initialState),
-    onClick: (text: string, id: string) => {
+    onClick: (text: string, id: string | undefined) => {
       const nextState = [...this.state];
 
       // 삭제할 값이 있을 경우 삭제

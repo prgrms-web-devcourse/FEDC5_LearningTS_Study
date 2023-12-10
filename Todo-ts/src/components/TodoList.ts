@@ -7,7 +7,7 @@ import validation from '../utils/validation';
 interface TodoListParams {
   $target: HTMLElement;
   initialState: StateArray;
-  onClick: (clickedText: string, clickedId: string | undefined) => void;
+  onClick: (arg1: string, arg2: string | undefined) => void;
 }
 
 export default function TodoList(
