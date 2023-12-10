@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    //엄격한 타입 지정 (any 등에 에러)
+    "strict": true
+  },
+  "include": [
+    // 타입스크립트 옵션 적용할 경로 지정
+    "src/**/*.ts", //src 모든 하위 경로의 모든파일.ts
+    "src/TodoList.js",
+    "utils/storage.ts",
+    "utils/createElement.ts"
+  ]
+}
