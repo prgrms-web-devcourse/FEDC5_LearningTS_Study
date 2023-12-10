@@ -31,7 +31,7 @@ export default function TodoList(
     $todoList.innerHTML = `
           <ul>
               ${this.state
-                .map(({ text, isCompleted }, i) => {
+                .map(({ text, isCompleted }, i: string) => {
                   return `<li><span data-id="${i}" class="${
                     isCompleted ? 'completed' : 'uncompleted'
                   }">${text}</span><button data-id="${i}">삭제</button></li>`;
@@ -48,8 +48,8 @@ export default function TodoList(
     const $todos = document.querySelectorAll('li');
 
     $todos.forEach((todo) => {
-      todo.addEventListener('click', (e: MouseEvent) => {
-        const target = e.currentTarget;
+      todo.addEventListener('click', (e) => {
+        const target = e.target;
         if (target && target instanceof HTMLElement) {
           // 클릭된 todo의 text와 id
           const [clickedText, clickedId] = [
@@ -73,7 +73,7 @@ export default function TodoList(
       button.addEventListener('click', (e) => {
         e.stopPropagation(); // 이벤트 버블링 방지
 
-        const target = e.currentTarget;
+        const target = e.target;
         if (target && target instanceof HTMLElement) {
           const [text, id] = [target.innerText, target.dataset.id];
           // 클릭 이벤트 내보내기
