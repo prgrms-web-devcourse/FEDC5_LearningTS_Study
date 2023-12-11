@@ -18,7 +18,10 @@ export function validateState(state: TodosType, origin = []) {
   return origin;
 }
 
-export function filterValidStorageState(state: TodosType, defaultState = []) {
+export function filterValidStorageState(
+  state: TodosType,
+  defaultState = [] as TodosType
+) {
   try {
     return state
       .filter(
@@ -33,7 +36,9 @@ export function filterValidStorageState(state: TodosType, defaultState = []) {
       )
       .map((val, idx) => ({ ...val, id: idx }));
   } catch (e) {
-    console.log(e);
+    if (e instanceof Error) {
+      console.log(e);
+    }
     return defaultState;
   }
 }

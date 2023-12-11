@@ -40,7 +40,7 @@ const App = function (this: AppContext, { $target, initialState }: AppProps) {
 
       syncState(nextState);
 
-      setItem("todos", JSON.stringify(nextState));
+      setItem("todos", nextState);
     },
   });
 

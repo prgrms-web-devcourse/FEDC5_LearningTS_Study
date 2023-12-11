@@ -24,7 +24,7 @@ const TodoList = function (
 
   this.setState = (nextState: any) => {
     this.state = nextState;
-    setItem("todos", JSON.stringify(this.state));
+    setItem("todos", this.state);
     this.render();
   };
 
