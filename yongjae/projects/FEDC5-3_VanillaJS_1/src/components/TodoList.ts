@@ -40,6 +40,7 @@ const TodoList = function (
         })
     );
   };
+  this.render();
 } as any as { new (props: TodoListProps): TodoListContext };
 
 export default TodoList;
