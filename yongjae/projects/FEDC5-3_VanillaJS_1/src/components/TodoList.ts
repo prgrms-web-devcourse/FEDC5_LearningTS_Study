@@ -4,12 +4,12 @@ import TodoItem from "./TodoItem";
 
 interface TodoListContext {
   state: TodosType;
-  setState: (nextState: any) => void;
+  setState: (nextState: TodosType) => void;
   render: () => void;
 }
 interface TodoListProps {
   $target: HTMLElement;
-  initialState: any;
+  initialState: TodosType;
   onToggle: (id: number) => void;
   onDelete: (id: number) => void;
 }
@@ -22,7 +22,7 @@ const TodoList = function (
   const $todoList = document.createElement("ul");
   $target.appendChild($todoList);
 
-  this.setState = (nextState: any) => {
+  this.setState = (nextState: TodosType) => {
     this.state = nextState;
     setItem("todos", this.state);
     this.render();
@@ -31,7 +31,7 @@ const TodoList = function (
   this.render = () => {
     $todoList.innerHTML = "";
     this.state.map(
-      (itemContext: any) =>
+      (itemContext) =>
         new TodoItem({
           $target: $todoList,
           initialValue: itemContext,
