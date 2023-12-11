@@ -1,18 +1,12 @@
-import { TodosType } from "../types/todo";
+import { TodoComponentStatefulContext, TodosType } from "../types/todo";
 
 interface TodoCountProps {
   $target: HTMLElement;
   initialState: TodosType;
 }
 
-// 임시 Context : this의 property를 정의하는 부분
-interface TodoCountContext {
-  state: TodosType;
-  setState: (nextState: TodosType) => void;
-  render: () => void;
-}
 const TodoCount = function (
-  this: TodoCountContext,
+  this: TodoComponentStatefulContext,
   { $target, initialState }: TodoCountProps
 ) {
   this.state = initialState;
@@ -35,6 +29,6 @@ const TodoCount = function (
   };
 
   this.render();
-} as any as { new (props: TodoCountProps): TodoCountContext };
+} as any as { new (props: TodoCountProps): TodoComponentStatefulContext };
 
 export default TodoCount;

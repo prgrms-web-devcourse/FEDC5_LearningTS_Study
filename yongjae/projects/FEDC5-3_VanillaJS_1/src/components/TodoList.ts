@@ -1,12 +1,7 @@
-import { TodosType } from "../types/todo";
+import { TodoComponentStatefulContext, TodosType } from "../types/todo";
 import { setItem } from "../utils/storage";
 import TodoItem from "./TodoItem";
 
-interface TodoListContext {
-  state: TodosType;
-  setState: (nextState: TodosType) => void;
-  render: () => void;
-}
 interface TodoListProps {
   $target: HTMLElement;
   initialState: TodosType;
@@ -14,7 +9,7 @@ interface TodoListProps {
   onDelete: (id: number) => void;
 }
 const TodoList = function (
-  this: TodoListContext,
+  this: TodoComponentStatefulContext,
   { initialState, $target, onToggle, onDelete }: TodoListProps
 ) {
   this.state = initialState;
@@ -41,6 +36,6 @@ const TodoList = function (
     );
   };
   this.render();
-} as any as { new (props: TodoListProps): TodoListContext };
+} as any as { new (props: TodoListProps): TodoComponentStatefulContext };
 
 export default TodoList;

@@ -1,4 +1,4 @@
-import { TodoType } from "../types/todo";
+import { TodoComponentStatelessContext, TodoType } from "../types/todo";
 
 type TodoItemProps = {
   $target: HTMLElement;
@@ -6,11 +6,9 @@ type TodoItemProps = {
   onToggle: (id: number) => void;
   onDelete: (id: number) => void;
 };
-type TodoItemContext = {
-  render: () => void;
-};
+
 const TodoItem = function (
-  this: TodoItemContext,
+  this: TodoComponentStatelessContext,
   { $target, initialValue, onToggle, onDelete }: TodoItemProps
 ) {
   const { id, text, isCompleted } = initialValue;
@@ -33,6 +31,6 @@ const TodoItem = function (
     });
   };
   this.render();
-} as any as { new (props: TodoItemProps): TodoItemContext };
+} as any as { new (props: TodoItemProps): TodoComponentStatelessContext };
 
 export default TodoItem;

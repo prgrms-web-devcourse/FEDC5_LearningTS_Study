@@ -8,7 +8,7 @@ import TodoList from "./TodoList";
 
 interface AppProps {
   $target: HTMLElement;
-  initialState: any;
+  initialState: TodosType;
 }
 
 // 임시 Context : this의 property를 정의하는 부분

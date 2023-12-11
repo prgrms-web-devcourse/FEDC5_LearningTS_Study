@@ -1,13 +1,12 @@
-interface TodoFormContext {
-  render: () => void;
-}
+import { TodoComponentStatelessContext } from "../types/todo";
+
 interface TodoFormProps {
   $target: HTMLElement;
   onSubmit: (text: string) => void;
 }
 
 const TodoForm = function (
-  this: TodoFormContext,
+  this: TodoComponentStatelessContext,
   { $target, onSubmit }: TodoFormProps
 ) {
   const $form = document.createElement("form");
@@ -40,6 +39,6 @@ const TodoForm = function (
   };
 
   this.render();
-} as any as { new (props: TodoFormProps): TodoFormContext };
+} as any as { new (props: TodoFormProps): TodoComponentStatelessContext };
 
 export default TodoForm;

@@ -1,12 +1,14 @@
+import { TodoComponentStatelessContext } from "../types/todo";
+
 interface HeaderProps {
   $target: HTMLElement;
   text: string;
 }
-interface HeaderContext {
-  render: () => void;
-}
 
-const Header = function (this: HeaderContext, { $target, text }: HeaderProps) {
+const Header = function (
+  this: TodoComponentStatelessContext,
+  { $target, text }: HeaderProps
+) {
   const $header = document.createElement("h1");
 
   $target.appendChild($header);
@@ -16,6 +18,6 @@ const Header = function (this: HeaderContext, { $target, text }: HeaderProps) {
   };
 
   this.render();
-} as any as { new (props: HeaderProps): HeaderContext };
+} as any as { new (props: HeaderProps): TodoComponentStatelessContext };
 
 export default Header;
