@@ -23,6 +23,18 @@ export type TodoComponentStatefulContext = StatefulComponentContext<TodosType>;
 export type TodoComponentStatelessContext =
   StatelessComponentContext<TodosType>;
 
-interface CoreComponentProps<T> {
+export interface CoreComponentProps {
   $target: HTMLElement;
 }
+
+export interface StatefulComponentProps<T> extends CoreComponentProps {
+  initialState: T;
+}
+
+export type TodoComponentStatefulProps<T = {}> =
+  StatefulComponentProps<TodosType> & {
+    [K in keyof T]: T[K];
+  };
+export type TodoComponentStatelessProps<T> = CoreComponentProps & {
+  [K in keyof T]: T[K];
+};

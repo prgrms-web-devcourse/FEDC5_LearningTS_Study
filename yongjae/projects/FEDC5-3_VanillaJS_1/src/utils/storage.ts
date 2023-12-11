@@ -1,4 +1,4 @@
-import { TodosType } from "../types/todo";
+import { TodosType } from "../types";
 
 export type setStorage<T> = (key: string, value: T) => void;
 export type getStorage<T> = (key: string, defaultValue: T) => T;

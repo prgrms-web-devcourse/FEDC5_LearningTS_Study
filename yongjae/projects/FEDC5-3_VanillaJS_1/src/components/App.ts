@@ -1,4 +1,4 @@
-import { TodosType } from "../types/todo";
+import { TodoComponentStatefulProps, TodosType } from "../types";
 import { setItem } from "../utils/storage";
 import { validateState } from "../utils/validateState";
 import Header from "./Header";
@@ -6,14 +6,11 @@ import TodoCount from "./TodoCount";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
-interface AppProps {
-  $target: HTMLElement;
-  initialState: TodosType;
-}
-
-// 임시 Context : this의 property를 정의하는 부분
 interface AppContext {}
-const App = function (this: AppContext, { $target, initialState }: AppProps) {
+const App = function (
+  this: AppContext,
+  { $target, initialState }: TodoComponentStatefulProps
+) {
   // ...
   initialState = validateState(initialState);
 
@@ -67,6 +64,6 @@ const App = function (this: AppContext, { $target, initialState }: AppProps) {
     $target,
     initialState,
   });
-} as any as { new (props: AppProps): AppContext };
+} as any as { new (props: TodoComponentStatefulProps): AppContext };
 
 export default App;

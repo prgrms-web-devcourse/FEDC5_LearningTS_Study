@@ -1,13 +1,15 @@
-import { TodoComponentStatefulContext, TodosType } from "../types/todo";
+import {
+  TodoComponentStatefulContext,
+  TodoComponentStatefulProps,
+  TodosType,
+} from "../types";
 import { setItem } from "../utils/storage";
 import TodoItem from "./TodoItem";
 
-interface TodoListProps {
-  $target: HTMLElement;
-  initialState: TodosType;
+type TodoListProps = TodoComponentStatefulProps<{
   onToggle: (id: number) => void;
   onDelete: (id: number) => void;
-}
+}>;
 const TodoList = function (
   this: TodoComponentStatefulContext,
   { initialState, $target, onToggle, onDelete }: TodoListProps

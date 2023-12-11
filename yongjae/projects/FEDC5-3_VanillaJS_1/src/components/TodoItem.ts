@@ -1,11 +1,14 @@
-import { TodoComponentStatelessContext, TodoType } from "../types/todo";
+import {
+  TodoComponentStatelessContext,
+  TodoComponentStatelessProps,
+  TodoType,
+} from "../types";
 
-type TodoItemProps = {
-  $target: HTMLElement;
+type TodoItemProps = TodoComponentStatelessProps<{
   initialValue: TodoType;
   onToggle: (id: number) => void;
   onDelete: (id: number) => void;
-};
+}>;
 
 const TodoItem = function (
   this: TodoComponentStatelessContext,

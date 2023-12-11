@@ -1,13 +1,12 @@
-import { TodoComponentStatefulContext, TodosType } from "../types/todo";
-
-interface TodoCountProps {
-  $target: HTMLElement;
-  initialState: TodosType;
-}
+import {
+  TodoComponentStatefulContext,
+  TodoComponentStatefulProps,
+  TodosType,
+} from "../types";
 
 const TodoCount = function (
   this: TodoComponentStatefulContext,
-  { $target, initialState }: TodoCountProps
+  { $target, initialState }: TodoComponentStatefulProps
 ) {
   this.state = initialState;
 
@@ -29,6 +28,8 @@ const TodoCount = function (
   };
 
   this.render();
-} as any as { new (props: TodoCountProps): TodoComponentStatefulContext };
+} as any as {
+  new (props: TodoComponentStatefulProps): TodoComponentStatefulContext;
+};
 
 export default TodoCount;

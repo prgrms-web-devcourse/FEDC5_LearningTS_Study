@@ -1,4 +1,4 @@
-import { TodosType } from "../types/todo";
+import { TodosType } from "../types";
 // todo 상태의 유효검사 함수
 export function validateState(state: TodosType, origin = []) {
   if (

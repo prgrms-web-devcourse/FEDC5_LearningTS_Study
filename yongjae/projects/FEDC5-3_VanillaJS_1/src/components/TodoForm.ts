@@ -1,9 +1,11 @@
-import { TodoComponentStatelessContext } from "../types/todo";
+import {
+  TodoComponentStatelessContext,
+  TodoComponentStatelessProps,
+} from "../types";
 
-interface TodoFormProps {
-  $target: HTMLElement;
+type TodoFormProps = TodoComponentStatelessProps<{
   onSubmit: (text: string) => void;
-}
+}>;
 
 const TodoForm = function (
   this: TodoComponentStatelessContext,

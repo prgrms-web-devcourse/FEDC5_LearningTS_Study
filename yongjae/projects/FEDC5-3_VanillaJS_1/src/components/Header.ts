@@ -1,9 +1,9 @@
-import { TodoComponentStatelessContext } from "../types/todo";
+import {
+  TodoComponentStatelessContext,
+  TodoComponentStatelessProps,
+} from "../types";
 
-interface HeaderProps {
-  $target: HTMLElement;
-  text: string;
-}
+type HeaderProps = TodoComponentStatelessProps<{ text: string }>;
 
 const Header = function (
   this: TodoComponentStatelessContext,
