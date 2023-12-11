@@ -1,9 +1,9 @@
+import { TodosType } from "../types/todo";
 import { setItem } from "../utils/storage";
-import { TodoState } from "../utils/validateState";
 import TodoItem from "./TodoItem";
 
 interface TodoListContext {
-  state: TodoState;
+  state: TodosType;
   setState: (nextState: any) => void;
   render: () => void;
 }

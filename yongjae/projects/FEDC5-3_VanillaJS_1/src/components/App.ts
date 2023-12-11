@@ -1,5 +1,6 @@
+import { TodosType } from "../types/todo";
 import { setItem } from "../utils/storage";
-import { TodoState, validateState } from "../utils/validateState";
+import { validateState } from "../utils/validateState";
 import Header from "./Header";
 import TodoCount from "./TodoCount";
 import TodoForm from "./TodoForm";
@@ -16,7 +17,7 @@ const App = function (this: AppContext, { $target, initialState }: AppProps) {
   // ...
   initialState = validateState(initialState);
 
-  const syncState = (state: TodoState) => {
+  const syncState = (state: TodosType) => {
     const validatedState = validateState(state).map((val, idx) => ({
       ...val,
       id: idx,

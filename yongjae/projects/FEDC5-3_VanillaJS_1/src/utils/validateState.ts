@@ -1,12 +1,6 @@
-export interface TodoItemContext {
-  text: string;
-  id: number;
-  isCompleted: boolean;
-}
-export type TodoState = TodoItemContext[];
-
+import { TodosType } from "../types/todo";
 // todo 상태의 유효검사 함수
-export function validateState(state: TodoState, origin = []) {
+export function validateState(state: TodosType, origin = []) {
   if (
     Array.isArray(state) &&
     state.every(
@@ -24,7 +18,7 @@ export function validateState(state: TodoState, origin = []) {
   return origin;
 }
 
-export function filterValidStorageState(state: TodoState, defaultState = []) {
+export function filterValidStorageState(state: TodosType, defaultState = []) {
   try {
     return state
       .filter(

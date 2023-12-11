@@ -1,11 +1,8 @@
-type ValueContext = {
-  id: number;
-  text: string;
-  isCompleted: boolean;
-};
+import { TodoType } from "../types/todo";
+
 type TodoItemProps = {
   $target: HTMLElement;
-  initialValue: ValueContext;
+  initialValue: TodoType;
   onToggle: (id: number) => void;
   onDelete: (id: number) => void;
 };

@@ -1,14 +1,14 @@
+import { TodosType } from "../types/todo";
+
 interface TodoCountProps {
   $target: HTMLElement;
-  initialState: StateContext[];
+  initialState: TodosType;
 }
-type StateContext = {
-  isCompleted: boolean;
-};
+
 // 임시 Context : this의 property를 정의하는 부분
 interface TodoCountContext {
-  state: StateContext[];
-  setState: (nextState: StateContext[]) => void;
+  state: TodosType;
+  setState: (nextState: TodosType) => void;
   render: () => void;
 }
 const TodoCount = function (
@@ -20,7 +20,7 @@ const TodoCount = function (
   const $todoCount = document.createElement("h3");
   $target.appendChild($todoCount);
 
-  this.setState = (nextState: StateContext[]) => {
+  this.setState = (nextState: TodosType) => {
     this.state = nextState;
     this.render();
   };
