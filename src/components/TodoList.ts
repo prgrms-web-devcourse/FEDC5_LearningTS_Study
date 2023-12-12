@@ -3,7 +3,7 @@ import validation from "../utils/validation.js";
 import { TodoItem } from "../types/todo.js";
 
 export default class TodoList {
-  state: TodoItem[] = [];
+  state: TodoItem[];
   private readonly $todoList = document.createElement("div");
 
   constructor(
