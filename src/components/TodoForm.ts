@@ -20,7 +20,8 @@ export default class TodoForm {
     if (!this.isInit) {
       this.$form.addEventListener("submit", (e) => {
         e.preventDefault();
-        const $todo = this.$form.querySelector("input[name=todo]") as HTMLInputElement;
+        const $todo = this.$form.querySelector<HTMLInputElement>("input[name=todo]");
+        if (!$todo) return;
         const text = $todo.value;
         if (text.length > 1) {
           $todo.value = "";

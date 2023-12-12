@@ -3,6 +3,6 @@ import { getItem } from "./utils/storage.js";
 
 const initialState = getItem("todo", []);
 const initialCount = getItem("count", { total: 0, done: 0 });
-const $app = document.querySelector("#app") as HTMLElement;
+const $app = document.querySelector<HTMLElement>("#app");
 
-new App($app, initialState, initialCount);
+$app && new App($app, initialState, initialCount);

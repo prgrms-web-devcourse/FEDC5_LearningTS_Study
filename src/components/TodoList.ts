@@ -24,7 +24,8 @@ export default class TodoList {
 
       if ($li) {
         const newState = [...this.state];
-        const index = +($li.dataset.index as string);
+        if (typeof $li.dataset.index !== "string") return;
+        const index = +$li.dataset.index;
 
         if (target.className === "deleteBtn") {
           newState.splice(index, 1);
