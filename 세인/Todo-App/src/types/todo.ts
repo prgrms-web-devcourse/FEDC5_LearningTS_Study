@@ -1,8 +1,7 @@
-// storage가 비어있을 수 있기 때문에 유니언 타입 사용
-// 이부분이 필요할까?
-export type Todo = TodoItem[] | []
+export type Todo = TodoItem[]
 
 export interface TodoItem {
+  id: string
   text: string
   isCompleted: boolean
 }
@@ -16,11 +15,11 @@ export interface TodoFormProps extends CommonProps {
 }
 
 export interface TodoCountProps extends CommonProps {
-  state: TodoItem[]
+  state: Todo
 }
 
 export interface TodoListProps extends CommonProps {
   state: Todo
-  completeTodo: (id: number) => void
-  deleteTodo: (id: number) => void
+  completeTodo: (id: string) => void
+  deleteTodo: (id: string) => void
 }

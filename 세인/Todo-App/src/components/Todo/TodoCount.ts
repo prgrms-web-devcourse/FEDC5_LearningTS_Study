@@ -8,13 +8,15 @@ export default function TodoCount(
 ) {
   validateConstructorUsage(new.target)
 
-  const $todoCount = document.createElement('div') as HTMLDivElement
-  $todoCount.className = 'todo-count'
+  const $todoCount = document.createElement('div')
+  if ($todoCount) $todoCount.className = 'todo-count'
+
   if ($target) $target.appendChild($todoCount)
 
   this.render = (state: Todo) => {
     const completedTodos = state.filter((todo) => todo.isCompleted).length
     const totalCount = state.length
+
     $todoCount.innerHTML = `
       <p>Completed: ${completedTodos}</p>
       <p>Total Tasks: ${totalCount}</p>

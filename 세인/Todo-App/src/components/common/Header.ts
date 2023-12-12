@@ -1,11 +1,11 @@
-import { CommonProps } from '../../types/todo.ts'
+import { CommonProps as Target } from '../../types/todo.ts'
 import { validateConstructorUsage } from '../../utils/validateConstructorUsage.js'
 
-export default function Header({ $target }: CommonProps) {
+export default function Header({ $target }: Target) {
   validateConstructorUsage(new.target)
 
-  const $header = document.createElement('div') as HTMLDivElement
-  $header.className = 'header'
+  const $header = document.createElement('div')
+  if ($header) $header.className = 'header'
 
   if ($target) $target.appendChild($header)
 

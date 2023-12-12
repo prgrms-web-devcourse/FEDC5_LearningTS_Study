@@ -8,17 +8,17 @@ export default function TodoList(
 ) {
   validateConstructorUsage(new.target)
 
-  const $todoList = document.createElement('div') as HTMLDivElement
-  if ($target) $target.appendChild($todoList)
+  const $todoList = document.createElement('div')
+  if ($todoList && $target) $target.appendChild($todoList)
 
   this.render = (state: Todo) => {
     $todoList.innerHTML = `
     <ul>
     ${state
       .map(
-        ({ text, isCompleted }: TodoItem, index: number) =>
+        ({ id, text, isCompleted }: TodoItem) =>
           `
-          <li class="todo-item" id="${index}">
+          <li class="todo-item" id="${id}">
             ${isCompleted ? `<s>${text}</s>` : `${text}`}
           <button class="remove">Delete</button>
           </li>
@@ -29,16 +29,15 @@ export default function TodoList(
     `
   }
 
-  $todoList.addEventListener('click', (event: Event) => {
+  $todoList.addEventListener('click', (event: MouseEvent) => {
     const $li = (event.target as HTMLLIElement).closest('.todo-item')
 
     if ($li) {
-      const id = Number($li.id)
       // 'EventTarget | null' 형식에 'className' 속성이 없습니다
       // -> HTMLElement로 지정
       const { className } = event.target as HTMLElement
 
-      className === 'remove' ? deleteTodo(id) : completeTodo(id)
+      className === 'remove' ? deleteTodo($li.id) : completeTodo($li.id)
     }
   })
 

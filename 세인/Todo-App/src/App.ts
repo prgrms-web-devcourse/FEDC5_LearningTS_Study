@@ -4,8 +4,9 @@ import TodoList from './components/Todo/TodoList.ts'
 import TodoCount from './components/Todo/TodoCount.ts'
 import Header from './components/common/Header.ts'
 import { validateConstructorUsage } from './utils/validateConstructorUsage.js'
-import { getItem, setItem } from './storage.ts'
-import { CommonProps, Todo } from './types/todo.ts'
+import { getItem, setItem } from './utils/storage.ts'
+import { CommonProps, Todo, TodoItem } from './types/todo.ts'
+import { v4 as uuidv4 } from 'uuid'
 
 export default function App(this: any, { $target }: CommonProps) {
   validateConstructorUsage(new.target)
@@ -28,6 +29,7 @@ export default function App(this: any, { $target }: CommonProps) {
     const nextState: Todo = [
       ...this.state,
       {
+        id: uuidv4(),
         text,
         isCompleted: false
       }
@@ -35,19 +37,24 @@ export default function App(this: any, { $target }: CommonProps) {
     this.setState(nextState)
   }
 
-  const deleteTodo = (id: number) => {
-    // '_' 매개 변수는 암시적으로 'any' 형식이지만, 사용량에서 더 나은 형식을 유추할 수 있습니다.ts(7044)
-    // -> unknown 설정??
+  const deleteTodo = (id: string) => {
     const nextState: Todo = this.state.filter(
-      (_: unknown, index: number) => index !== id
+      (todo: TodoItem) => todo.id !== id
     )
     this.setState(nextState)
   }
 
-  const completeTodo = (id: number) => {
-    const updateState: Todo = [...this.state]
-    updateState[id].isCompleted = !updateState[id].isCompleted
-    this.setState(updateState)
+  const completeTodo = (id: string) => {
+    const nextState: Todo = this.state.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          isCompleted: !todo.isCompleted
+        }
+      }
+      return todo
+    })
+    this.setState(nextState)
   }
 
   new Header({ $target })

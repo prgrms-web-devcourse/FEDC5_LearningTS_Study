@@ -8,8 +8,9 @@ export default function TodoForm(
 ) {
   validateConstructorUsage(new.target)
 
-  const $form = document.createElement('form') as HTMLFormElement
-  $form.className = 'todo-form'
+  const $form = document.createElement('form')
+  if ($form) $form.className = 'todo-form'
+
   $target.appendChild($form)
 
   this.render = () => {
@@ -19,10 +20,10 @@ export default function TodoForm(
     `
   }
 
-  $form.addEventListener('submit', (event: Event) => {
+  $form.addEventListener('submit', (event: SubmitEvent) => {
     event.preventDefault()
 
-    const $input = $form.querySelector('input[name=todo]') as HTMLInputElement
+    const $input = $form.querySelector<HTMLInputElement>('input[name=todo]')
 
     const text: string = $input ? $input.value : ''
 
