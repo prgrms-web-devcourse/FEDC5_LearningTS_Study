@@ -4,28 +4,31 @@ export interface Todo {
   title: string;
 }
 
-export interface AppProps {
+export interface TodoBasicProps {
   $app: HTMLDivElement;
+}
+
+export interface InitialStateProps {
   initialState: Todo[];
 }
 
-export interface HeaderProps {
-  $app: HTMLDivElement;
+export interface AppProps extends TodoBasicProps, InitialStateProps {}
+
+export interface TodoCounterProps extends TodoBasicProps, InitialStateProps {}
+
+export interface HeaderProps extends TodoBasicProps {
   title: string;
 }
 
-export interface createTodoProps {
-  $app: HTMLDivElement;
+export interface createTodoProps extends TodoBasicProps {
   onSubmit: (text: string) => void;
 }
 
-export interface TodoListProps {
-  $app: HTMLElement;
-  todoInitialState: Todo[];
+export interface TodoListProps extends TodoBasicProps, InitialStateProps {
   updateTodoCounter: (nextState: Todo[]) => void;
+  onRemoveTodo: (id: string) => void;
+  onToggleTodo: (id: string) => void;
 }
 
-export interface TodoCounterProps {
-  $app: HTMLDivElement;
-  initialState: Todo[];
-}
+export type GetItem = <T>(key: 'todo', defaultValue: T[]) => T[];
+export type SetItem = (key: 'todo', value: string) => void;

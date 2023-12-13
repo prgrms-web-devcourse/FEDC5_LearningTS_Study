@@ -9,5 +9,11 @@ export const setItem = (key, value) => {
 };
 export const getItem = (key, defaultValue) => {
     const storedValue = storage.getItem(key);
-    return storedValue ? JSON.parse(storedValue) : defaultValue;
+    try {
+        return storedValue ? JSON.parse(storedValue) : defaultValue;
+    }
+    catch (e) {
+        console.error('Error parsing stored value:', e);
+        return defaultValue;
+    }
 };

@@ -1,8 +1,8 @@
 import { Todo, TodoCounterProps } from '../util/types.js';
 
 export default class TodoCounter {
-  state: Todo[];
-  $counter: HTMLDivElement;
+  private state: Todo[];
+  private readonly $counter: HTMLDivElement;
 
   constructor({ $app, initialState }: TodoCounterProps) {
     this.$counter = document.createElement('div');

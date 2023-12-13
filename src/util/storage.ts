@@ -1,6 +1,8 @@
+import type { GetItem, SetItem } from './types';
+
 const storage = window.localStorage;
 
-export const setItem = (key: string, value: string) => {
+export const setItem: SetItem = (key, value) => {
   try {
     storage.setItem(key, value);
   } catch (e) {
@@ -8,7 +10,12 @@ export const setItem = (key: string, value: string) => {
   }
 };
 
-export const getItem = (key: string, defaultValue: []) => {
+export const getItem: GetItem = (key, defaultValue) => {
   const storedValue = storage.getItem(key);
-  return storedValue ? JSON.parse(storedValue) : defaultValue;
+  try {
+    return storedValue ? JSON.parse(storedValue) : defaultValue;
+  } catch (e) {
+    console.error('Error parsing stored value:', e);
+    return defaultValue;
+  }
 };

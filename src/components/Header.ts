@@ -1,9 +1,9 @@
 import { HeaderProps } from '../util/types.js';
 
 export default class Header {
-  $app: HTMLDivElement;
-  title: string;
-  $header: HTMLHeadElement;
+  private readonly $app: HTMLDivElement;
+  private readonly title: string;
+  private readonly $header: HTMLHeadElement;
 
   constructor({ $app, title }: HeaderProps) {
     this.$header = document.createElement('h1');

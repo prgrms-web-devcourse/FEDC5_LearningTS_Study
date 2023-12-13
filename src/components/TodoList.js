@@ -1,29 +1,15 @@
 import { setItem } from '../util/storage.js';
 const STORAGE_KEY = 'todo';
 export default class TodoList {
-    constructor({ $app, todoInitialState, updateTodoCounter }) {
+    constructor({ $app, initialState, updateTodoCounter, onRemoveTodo, onToggleTodo, }) {
         this.$todoList = document.createElement('div');
         $app.appendChild(this.$todoList);
+        this.onRemoveTodo = onRemoveTodo;
+        this.onToggleTodo = onToggleTodo;
         this.updateTodoCounter = updateTodoCounter;
-        this.state = todoInitialState;
+        this.state = initialState;
         this.setEvent();
         this.render();
-    }
-    completedTodo(id) {
-        const nextState = this.state.map((todo) => {
-            if (todo.id === id) {
-                return {
-                    ...todo,
-                    isCompleted: !todo.isCompleted,
-                };
-            }
-            return todo;
-        });
-        this.setState(nextState);
-    }
-    removeTodo(id) {
-        const nextState = this.state.filter((todo) => todo.id !== id);
-        this.setState(nextState);
     }
     setState(nextState) {
         setItem(STORAGE_KEY, JSON.stringify(nextState));
@@ -54,9 +40,9 @@ export default class TodoList {
         this.$todoList.addEventListener('click', (event) => {
             const target = event.target;
             const id = target.dataset.id;
-            if (id !== null) {
-                target.className === 'toggled-text' && this.completedTodo(id);
-                target.className === 'remove-button' && this.removeTodo(id);
+            if (id) {
+                target.className === 'toggled-text' && this.onToggleTodo(id);
+                target.className === 'remove-button' && this.onRemoveTodo(id);
             }
         });
     }

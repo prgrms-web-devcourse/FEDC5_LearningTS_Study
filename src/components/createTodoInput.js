@@ -15,9 +15,11 @@ export default class createTodo {
             this.$form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const $input = this.$form.querySelector('input[name="todo"]');
-                const text = $input.value;
-                this.onSubmit(text);
-                $input.value = '';
+                if ($input) {
+                    const text = $input.value;
+                    this.onSubmit(text);
+                    $input.value = '';
+                }
             });
         }
     }
