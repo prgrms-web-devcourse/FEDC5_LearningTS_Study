@@ -1,4 +1,8 @@
-export interface TodoItem {
+export type StorageKey = "todo" | "count";
+
+export type TodoList = TodoItem[];
+
+interface TodoItem {
   text: string;
   isCompleted: boolean;
 }

@@ -8,11 +8,10 @@ export default class TodoCount {
     private readonly $target: HTMLElement,
     private readonly initialCount: TodoCnt
   ) {
-    this.$target.appendChild(this.$container);
+    $target.appendChild(this.$container);
 
-    if (this.initialCount.total) {
-      this.state = this.initialCount;
-    } else this.state = { total: 0, done: 0 };
+    if (initialCount.total) this.state = initialCount;
+    else this.state = { total: 0, done: 0 };
 
     this.render();
   }

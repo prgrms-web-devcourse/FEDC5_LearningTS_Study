@@ -1,19 +1,19 @@
 import { setItem } from "../utils/storage.js";
 import validation from "../utils/validation.js";
-import { TodoItem } from "../types/todo.js";
+import { TodoList as TodoLi } from "../types/todo.js";
 
 export default class TodoList {
-  state: TodoItem[];
+  state: TodoLi;
   private readonly $todoList = document.createElement("div");
 
   constructor(
     private readonly $target: HTMLElement,
-    private readonly initialState: TodoItem[],
-    private readonly updateCount: (state: TodoItem[]) => void
+    private readonly initialState: TodoLi,
+    private readonly updateCount: (state: TodoLi) => void
   ) {
-    this.$target.appendChild(this.$todoList);
+    $target.appendChild(this.$todoList);
 
-    if (Array.isArray(this.initialState)) this.state = this.initialState;
+    if (Array.isArray(initialState)) this.state = initialState;
     else this.state = [];
 
     this.render();
@@ -22,29 +22,29 @@ export default class TodoList {
       const target = e.target as HTMLLIElement;
       const $li = target.closest("li");
 
-      if ($li) {
-        const newState = [...this.state];
-        if (typeof $li.dataset.index !== "string") return;
-        const index = +$li.dataset.index;
+      if (!$li) return;
 
-        if (target.className === "deleteBtn") {
-          newState.splice(index, 1);
-          this.setState(newState);
-        } else if (target.className.includes("todoList")) {
-          const isCompleted = target.className.includes("completed");
-          if (isCompleted) target.classList.remove("completed");
-          else target.classList.add("completed");
-          newState[index] = {
-            ...newState[index],
-            isCompleted: !isCompleted,
-          };
-          this.setState(newState);
-        }
+      const newState = [...this.state];
+      if (typeof $li.dataset.index !== "string") return;
+      const index = +$li.dataset.index;
+
+      if (target.className === "deleteBtn") {
+        newState.splice(index, 1);
+        this.setState(newState);
+      } else if (target.className.includes("todoList")) {
+        const isCompleted = target.className.includes("completed");
+        if (isCompleted) target.classList.remove("completed");
+        else target.classList.add("completed");
+        newState[index] = {
+          ...newState[index],
+          isCompleted: !isCompleted,
+        };
+        this.setState(newState);
       }
     });
   }
 
-  setState(nextState: TodoItem[]) {
+  setState(nextState: TodoLi) {
     const newState = validation.state(nextState);
     this.state = newState;
     setItem("todo", JSON.stringify(newState));
