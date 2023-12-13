@@ -1,15 +1,15 @@
 import { setItem } from "../utils/storage.js";
 import validation from "../utils/validation.js";
-import { TodoItem } from "../types/todo.js";
+import { TodoList as TodoLi } from "../types/todo.js";
 
 export default class TodoList {
-  state: TodoItem[];
+  state: TodoLi;
   private readonly $todoList = document.createElement("div");
 
   constructor(
     private readonly $target: HTMLElement,
-    private readonly initialState: TodoItem[],
-    private readonly updateCount: (state: TodoItem[]) => void
+    private readonly initialState: TodoLi,
+    private readonly updateCount: (state: TodoLi) => void
   ) {
     $target.appendChild(this.$todoList);
 
@@ -44,7 +44,7 @@ export default class TodoList {
     });
   }
 
-  setState(nextState: TodoItem[]) {
+  setState(nextState: TodoLi) {
     const newState = validation.state(nextState);
     this.state = newState;
     setItem("todo", JSON.stringify(newState));

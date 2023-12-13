@@ -1,7 +1,7 @@
-import { TodoItem } from "../types/todo.js";
+import { TodoList } from "../types/todo.js";
 
 const validation = {
-  state(todoList: TodoItem[]) {
+  state(todoList: TodoList) {
     return todoList.filter(
       (todo) =>
         typeof todo?.text === "string" && typeof todo?.isCompleted === "boolean"
