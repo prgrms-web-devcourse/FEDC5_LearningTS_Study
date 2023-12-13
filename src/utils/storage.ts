@@ -1,3 +1,5 @@
+import { StorageKey } from "../types/todo";
+
 const storage = window.localStorage;
 
 export const setItem = (key: string, value: string) => {
@@ -9,7 +11,7 @@ export const setItem = (key: string, value: string) => {
   }
 };
 
-export const getItem = <T>(key: string, defaultValue: T): T => {
+export const getItem = <T>(key: StorageKey, defaultValue: T): T => {
   try {
     const data = storage.getItem(key);
     if (data) return JSON.parse(data);
