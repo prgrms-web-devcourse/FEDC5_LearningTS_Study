@@ -1,16 +1,15 @@
-import { Todo } from '../types/todo'
-
 const storage: Storage = window.localStorage
 
 export const setItem = (key: string, value: string) => {
   try {
     storage.setItem(key, value)
-  } catch (error: unknown) {
+  } catch (error) {
     if (error instanceof Error) {
       throw new Error(error.message)
     }
   }
 }
+
 export const getItem = <T>(key: string, defaultValue: T): T => {
   try {
     const storedValue = storage.getItem(key)
@@ -18,7 +17,7 @@ export const getItem = <T>(key: string, defaultValue: T): T => {
       return JSON.parse(storedValue)
     }
     return defaultValue
-  } catch (error: unknown) {
+  } catch (error) {
     if (error instanceof Error) {
       throw new Error(error.message)
     }
