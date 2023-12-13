@@ -22,24 +22,24 @@ export default class TodoList {
       const target = e.target as HTMLLIElement;
       const $li = target.closest("li");
 
-      if ($li) {
-        const newState = [...this.state];
-        if (typeof $li.dataset.index !== "string") return;
-        const index = +$li.dataset.index;
+      if (!$li) return;
 
-        if (target.className === "deleteBtn") {
-          newState.splice(index, 1);
-          this.setState(newState);
-        } else if (target.className.includes("todoList")) {
-          const isCompleted = target.className.includes("completed");
-          if (isCompleted) target.classList.remove("completed");
-          else target.classList.add("completed");
-          newState[index] = {
-            ...newState[index],
-            isCompleted: !isCompleted,
-          };
-          this.setState(newState);
-        }
+      const newState = [...this.state];
+      if (typeof $li.dataset.index !== "string") return;
+      const index = +$li.dataset.index;
+
+      if (target.className === "deleteBtn") {
+        newState.splice(index, 1);
+        this.setState(newState);
+      } else if (target.className.includes("todoList")) {
+        const isCompleted = target.className.includes("completed");
+        if (isCompleted) target.classList.remove("completed");
+        else target.classList.add("completed");
+        newState[index] = {
+          ...newState[index],
+          isCompleted: !isCompleted,
+        };
+        this.setState(newState);
       }
     });
   }

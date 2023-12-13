@@ -17,17 +17,17 @@ export default class TodoForm {
       <button>추가</button>
     `;
 
-    if (!this.isInit) {
-      this.$form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const $todo = this.$form.querySelector<HTMLInputElement>("input[name=todo]");
-        if (!$todo) return;
-        const text = $todo.value;
-        if (text.length > 1) {
-          $todo.value = "";
-          this.onSubmit(text);
-        } else alert("두 글자 이상 입력해주세요");
-      });
-    }
+    if (this.isInit) return;
+
+    this.$form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const $todo = this.$form.querySelector<HTMLInputElement>("input[name=todo]");
+      if (!$todo) return;
+      const text = $todo.value;
+      if (text.length > 1) {
+        $todo.value = "";
+        this.onSubmit(text);
+      } else alert("두 글자 이상 입력해주세요");
+    });
   };
 }
