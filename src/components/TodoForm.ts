@@ -7,7 +7,7 @@ export default class TodoForm {
     private readonly $target: HTMLElement,
     private readonly onSubmit: (text: string) => void
   ) {
-    this.$target.appendChild(this.$form);
+    $target.appendChild(this.$form);
     this.render();
   }
 

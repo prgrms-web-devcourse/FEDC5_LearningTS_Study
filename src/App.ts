@@ -14,23 +14,26 @@ export default class App {
     private readonly initialState: TodoItem[],
     private readonly initialCount: TodoCnt
   ) {
-    new Header(this.$target, "Todo List");
+    new Header($target, "Todo List");
 
     new TodoForm(
-      this.$target,
+      $target,
       (text: string) => {
-        const nextState = [...this.todoList.state, { text, isCompleted: false }];
+        const nextState = [
+          ...this.todoList.state,
+          { text, isCompleted: false }
+        ];
         this.todoList.setState(nextState);
       },
     );
 
     this.todoList = new TodoList(
-      this.$target,
-      this.initialState,
       (state: TodoItem[]) => this.#updateCount(state)
+      $target,
+      initialState,
     );
 
-    this.todoCount = new TodoCount(this.$target, this.initialCount);
+    this.todoCount = new TodoCount($target, initialCount);
   }
 
   // 카운트 업데이트

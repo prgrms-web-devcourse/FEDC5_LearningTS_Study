@@ -5,7 +5,7 @@ export default class Header {
     private readonly $target: HTMLElement,
     private readonly text: string
   ) {
-    this.$target.appendChild(this.$header);
+    $target.appendChild(this.$header);
     this.render();
   };
 

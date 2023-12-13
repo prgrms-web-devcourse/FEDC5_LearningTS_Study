@@ -11,9 +11,9 @@ export default class TodoList {
     private readonly initialState: TodoItem[],
     private readonly updateCount: (state: TodoItem[]) => void
   ) {
-    this.$target.appendChild(this.$todoList);
+    $target.appendChild(this.$todoList);
 
-    if (Array.isArray(this.initialState)) this.state = this.initialState;
+    if (Array.isArray(initialState)) this.state = initialState;
     else this.state = [];
 
     this.render();
