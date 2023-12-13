@@ -3,8 +3,9 @@ const storage = window.localStorage;
 export const setItem = (key: string, value: string) => {
   try {
     storage.setItem(key, value);
-  } catch (error) {
-    console.log(error);
+  }
+  catch (error: unknown) {
+    if (error instanceof Error) console.log(error);
   }
 };
 
@@ -14,7 +15,7 @@ export const getItem = <T>(key: string, defaultValue: T): T => {
     if (data) return JSON.parse(data);
     return defaultValue;
   } catch (error) {
-    console.log(error);
+    if (error instanceof Error) console.log(error);
     return defaultValue;
   }
 };
