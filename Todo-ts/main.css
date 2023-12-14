@@ -25,6 +25,7 @@ h1 {
 /* 입력 폼 */
 .todoForm {
   display: flex;
+  min-width: 400px;
   width: 80%;
   height: 10%;
   text-align: center;
@@ -94,6 +95,7 @@ h1 {
   border-radius: 5px;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .todoList li span {
