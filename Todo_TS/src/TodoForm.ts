@@ -14,12 +14,11 @@ export default function TodoForm({ $target, onSubmit }: ITodoForm) {
       $form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const $input = <HTMLInputElement>(
-          $form.querySelector('input[name=todo]')
-        );
-        const text = $input.value;
+        const $input =
+          $form.querySelector<HTMLInputElement>('input[name=todo]');
+        const text = $input ? $input.value : '';
         if (text.length > 1) {
-          $input.value = '';
+          if ($input) $input.value = '';
 
           onSubmit(text);
         }

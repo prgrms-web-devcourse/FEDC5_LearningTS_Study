@@ -5,15 +5,14 @@ import TodoHeader from './TodoHeader';
 import { storageSetItem, storageGetItem } from '../utils/storage';
 import { IApp, ITodo } from '../types/todoTypes';
 
-const storageTodos = storageGetItem('todos', '');
-let IDX =
+const storageTodos = storageGetItem('todos', []);
+let IDX: number =
   storageTodos && storageTodos.length > 0
-    ? storageGetItem('todos', '')[storageTodos.length - 1].idx + 1
+    ? storageGetItem('todos', [])[storageTodos.length - 1].idx + 1
     : 0;
 
 export default function App({ $target, initialState }: IApp) {
   const assignNewState = (nextTodos: ITodo[]) => {
-    /// 구 handleValidated
     storageSetItem('todos', JSON.stringify(nextTodos));
     todoList.setState(nextTodos);
     todoList.state = nextTodos; //// todoList.setState에 state=nextState 할당 있는데 왜 또해야할까
@@ -42,8 +41,7 @@ export default function App({ $target, initialState }: IApp) {
     $target,
     initialState,
     handleComplete: (idx: number) => {
-      const todos = storageGetItem('todos', '');
-
+      const todos = storageGetItem('todos', []);
       todos.forEach((todo: ITodo) => {
         if (todo.idx === idx) {
           todo.isCompleted = !todo.isCompleted;
@@ -52,7 +50,7 @@ export default function App({ $target, initialState }: IApp) {
       assignNewState(todos);
     },
     handleDelete: (idx: number) => {
-      const lastTodos = storageGetItem('todos', '').filter(
+      const lastTodos = storageGetItem('todos', []).filter(
         (todo: ITodo) => todo.idx !== idx,
       );
       assignNewState(lastTodos);

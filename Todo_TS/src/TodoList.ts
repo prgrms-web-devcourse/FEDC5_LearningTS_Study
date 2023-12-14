@@ -14,7 +14,6 @@ export default function TodoList({
   let isInit = false;
 
   const setState = (nextState: ITodo[]) => {
-    // console.log('TodoList에서 nextState', nextState);
     state = nextState;
 
     if (!isInit) {
@@ -31,23 +30,23 @@ export default function TodoList({
         if (isCompleted) {
           todoLi.className = 'done';
         }
-        todoLi.addEventListener('click', (e: any) => {
-          const idx = e.target.dataset.idx;
-          handleComplete(parseInt(idx));
+        todoLi.addEventListener('click', (e: MouseEvent) => {
+          // 이벤트에 대한 타입은 MouseEvent가 맞나요?
+          // 이후에 e.target 등으로 접근하기 위해 항상 as HTMLLiElement 처럼 단언하는 방법밖에 없을까요..?
+          const idx = (e.target as HTMLLIElement).dataset.idx;
+          if (idx) handleComplete(parseInt(idx));
         });
 
         // prettier-ignore
         const newTodoBtn = createTodoElement({$target: todoDiv, element:"button", idx, text:"🗑️"})
-        newTodoBtn.addEventListener('click', (e: any) => {
-          const idx = e.target.dataset.idx;
-          handleDelete(parseInt(idx));
+        newTodoBtn.addEventListener('click', (e: MouseEvent) => {
+          const idx = (e.target as HTMLButtonElement).dataset.idx;
+          if (idx) handleDelete(parseInt(idx));
         });
 
         $listWrap && $listWrap.appendChild(todoDiv);
       });
-    // $target && $target.appendChild($listWrap);
     $listWrap && $listWrap.before($listWrap);
-    // console.log(state);
   };
 
   setState(initialState);

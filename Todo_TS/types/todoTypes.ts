@@ -1,6 +1,6 @@
 export interface IApp {
   $target: HTMLElement | null;
-  initialState: [];
+  initialState: ITodo[];
 }
 export interface ITodoHeader {
   $target: HTMLElement | null;
@@ -12,12 +12,12 @@ export interface ITodoForm {
 }
 export interface ITodoCount {
   $target: HTMLElement | null;
-  initialState: [];
+  initialState: ITodo[];
 }
 
 export interface ITodoList {
   $target: HTMLElement | null;
-  initialState: [];
+  initialState: ITodo[];
   handleComplete: (idx: number) => void;
   handleDelete: (idx: number) => void;
 }
