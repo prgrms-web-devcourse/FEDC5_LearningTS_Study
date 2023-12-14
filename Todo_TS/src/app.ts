@@ -20,7 +20,7 @@ const App = ({ $target, initialState }: MainParamsType) => {
     validation(nextState);
     todoList.setState(nextState);
     todoList.state = nextState;
-    setItem("todos", JSON.stringify(nextState));
+    setItem("todos", nextState);
     todoCount.setState(nextState);
   };
 
@@ -30,7 +30,7 @@ const App = ({ $target, initialState }: MainParamsType) => {
     });
     todoList.setState(nextState);
     todoList.state = nextState;
-    setItem("todos", JSON.stringify(nextState));
+    setItem("todos", nextState);
     todoCount.setState(nextState);
   };
 
@@ -42,7 +42,7 @@ const App = ({ $target, initialState }: MainParamsType) => {
       .filter((element) => element != undefined);
     todoList.setState(nextState);
     todoList.state = nextState;
-    setItem("todos", JSON.stringify(nextState));
+    setItem("todos", nextState);
     todoCount.setState(nextState);
   };
 

@@ -30,3 +30,6 @@ export type TodoListParamsType = {
 };
 
 export type TodoCount = MainParamsType;
+
+export type setStorage<T> = (key: string, value: T) => void;
+export type getStorage<T> = (key: string, defaultValue: T) => T;
