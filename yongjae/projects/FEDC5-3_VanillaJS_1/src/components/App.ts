@@ -15,10 +15,7 @@ const App = function (
   initialState = validateState(initialState);
 
   const syncState = (state: TodosType) => {
-    const validatedState = validateState(state).map((val, idx) => ({
-      ...val,
-      id: idx,
-    }));
+    const validatedState = validateState(state);
     todoList.setState(validatedState);
     todoCount.setState(validatedState);
   };
@@ -32,7 +29,7 @@ const App = function (
     onSubmit: (text: string) => {
       const nextState = [
         ...todoList.state,
-        { id: todoList.state.length, text, isCompleted: false },
+        { id: String(Date.now()), text, isCompleted: false },
       ];
 
       syncState(nextState);
@@ -44,14 +41,14 @@ const App = function (
   const todoList = new TodoList({
     $target,
     initialState,
-    onToggle: (todoId: number) => {
+    onToggle: (todoId: string) => {
       const nextState = todoList.state.map((todo) => {
         if (todo.id === todoId) todo.isCompleted = !todo.isCompleted;
         return todo;
       });
       syncState(nextState);
     },
-    onDelete: (todoId: number) => {
+    onDelete: (todoId: string) => {
       const nextState = todoList.state.filter((todo) => {
         if (todo.id === todoId) return false;
         return true;

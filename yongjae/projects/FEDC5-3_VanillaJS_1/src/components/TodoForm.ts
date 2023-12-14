@@ -23,9 +23,7 @@ const TodoForm = function (
       $form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        const $todo = $form.querySelector(
-          `input[name=todo]`
-        ) as HTMLInputElement;
+        const $todo = $form.querySelector<HTMLInputElement>(`input[name=todo]`);
 
         let text = "";
         if ($todo && $todo.value) {
@@ -33,8 +31,10 @@ const TodoForm = function (
         }
 
         if (text.length > 1 && text.trim()) {
-          $todo.value = "";
-          onSubmit(text);
+          if ($todo) {
+            $todo.value = "";
+            onSubmit(text);
+          }
         }
       });
     }

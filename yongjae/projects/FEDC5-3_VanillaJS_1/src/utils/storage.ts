@@ -20,7 +20,7 @@ export const setItem: setStorage<TodosType> = (
 
 export const getItem: getStorage<TodosType> = (
   key: string,
-  defaultValue = [] as TodosType
+  defaultValue = []
 ) => {
   try {
     const storedValue = storage.getItem(key);

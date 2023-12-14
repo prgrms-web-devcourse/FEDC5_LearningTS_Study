@@ -1,6 +1,6 @@
 export interface TodoType {
   text: string;
-  id: number;
+  id: string;
   isCompleted: boolean;
 }
 export type TodosType = TodoType[];
