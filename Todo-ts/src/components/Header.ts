@@ -1,5 +1,3 @@
-import { QuerySelectType } from '../globalTypes';
-
 interface HeaderParams {
   $target: HTMLElement;
   text: string;
@@ -11,8 +9,7 @@ export default function Header(this: any, { $target, text }: HeaderParams) {
     throw new Error('new 키워드를 사용하여야 합니다.');
   }
 
-  const $header: QuerySelectType<HTMLHeadingElement> =
-    document.createElement('h1');
+  const $header = document.createElement('h1');
 
   $target.appendChild($header);
 
