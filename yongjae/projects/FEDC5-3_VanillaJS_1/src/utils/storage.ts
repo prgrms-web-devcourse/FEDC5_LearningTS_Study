@@ -1,3 +1,4 @@
+import { ERROR_MESSAGES } from "../constants";
 import { Todos } from "../types";
 
 export type setStorage<T> = (key: string, value: T) => void;
@@ -10,7 +11,7 @@ export const setItem: setStorage<Todos> = (key: string, value: Todos) => {
     storage.setItem(key, JSON.stringify(value));
   } catch (e: unknown) {
     if (e instanceof Error) {
-      console.error(e);
+      console.warn(ERROR_MESSAGES[e.message]);
     }
   }
 };
@@ -24,7 +25,7 @@ export const getItem: getStorage<Todos> = (key: string, defaultValue = []) => {
     return defaultValue;
   } catch (e: unknown) {
     if (e instanceof Error) {
-      console.error(e);
+      console.warn(ERROR_MESSAGES[e.message]);
       return defaultValue;
     }
   }

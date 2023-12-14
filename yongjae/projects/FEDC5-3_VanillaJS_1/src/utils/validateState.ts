@@ -1,3 +1,4 @@
+import { ERROR_MESSAGES } from "../constants";
 import { Todos } from "../types";
 // todo 상태의 유효검사 함수
 export function validateState(state: Todos, origin: Todos = []) {
@@ -13,8 +14,10 @@ export function validateState(state: Todos, origin: Todos = []) {
         Object.hasOwn(val, "id") &&
         typeof val.id === "string"
     )
-  )
+  ) {
     return state;
+  }
+  console.warn(ERROR_MESSAGES["invalidState"]);
   return origin;
 }
 
@@ -35,7 +38,7 @@ export function filterValidStorageState(
     );
   } catch (e) {
     if (e instanceof Error) {
-      console.log(e);
+      console.warn(ERROR_MESSAGES[e.message]);
     }
     return defaultState;
   }
