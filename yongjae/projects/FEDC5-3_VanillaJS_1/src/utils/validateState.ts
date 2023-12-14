@@ -1,6 +1,6 @@
-import { TodosType } from "../types";
+import { Todos } from "../types";
 // todo 상태의 유효검사 함수
-export function validateState(state: TodosType, origin: TodosType = []) {
+export function validateState(state: Todos, origin: Todos = []) {
   if (
     Array.isArray(state) &&
     state.every(
@@ -19,8 +19,8 @@ export function validateState(state: TodosType, origin: TodosType = []) {
 }
 
 export function filterValidStorageState(
-  state: TodosType,
-  defaultState: TodosType = []
+  state: Todos,
+  defaultState: Todos = []
 ) {
   try {
     return state.filter(

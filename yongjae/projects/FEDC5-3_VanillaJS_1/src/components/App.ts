@@ -1,4 +1,4 @@
-import { TodoComponentStatefulProps, TodosType } from "../types";
+import { TodoComponentStatefulProps, Todos } from "../types";
 import { setItem } from "../utils/storage";
 import { validateState } from "../utils/validateState";
 import Header from "./Header";
@@ -14,7 +14,7 @@ const App = function (
   // ...
   initialState = validateState(initialState);
 
-  const syncState = (state: TodosType) => {
+  const syncState = (state: Todos) => {
     const validatedState = validateState(state);
     todoList.setState(validatedState);
     todoCount.setState(validatedState);

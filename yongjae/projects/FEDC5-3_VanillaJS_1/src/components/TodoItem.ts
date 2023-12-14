@@ -1,11 +1,11 @@
 import {
   TodoComponentStatelessContext,
   TodoComponentStatelessProps,
-  TodoType,
+  Todo,
 } from "../types";
 
 type TodoItemProps = TodoComponentStatelessProps<{
-  initialValue: TodoType;
+  initialValue: Todo;
   onToggle: (id: string) => void;
   onDelete: (id: string) => void;
 }>;

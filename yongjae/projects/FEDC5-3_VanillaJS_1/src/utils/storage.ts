@@ -1,14 +1,11 @@
-import { TodosType } from "../types";
+import { Todos } from "../types";
 
 export type setStorage<T> = (key: string, value: T) => void;
 export type getStorage<T> = (key: string, defaultValue: T) => T;
 
 const storage = window.localStorage;
 
-export const setItem: setStorage<TodosType> = (
-  key: string,
-  value: TodosType
-) => {
+export const setItem: setStorage<Todos> = (key: string, value: Todos) => {
   try {
     storage.setItem(key, JSON.stringify(value));
   } catch (e: unknown) {
@@ -18,10 +15,7 @@ export const setItem: setStorage<TodosType> = (
   }
 };
 
-export const getItem: getStorage<TodosType> = (
-  key: string,
-  defaultValue = []
-) => {
+export const getItem: getStorage<Todos> = (key: string, defaultValue = []) => {
   try {
     const storedValue = storage.getItem(key);
     if (storedValue) {

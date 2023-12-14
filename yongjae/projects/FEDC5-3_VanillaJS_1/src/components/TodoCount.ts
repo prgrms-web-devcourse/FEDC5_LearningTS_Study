@@ -1,7 +1,7 @@
 import {
   TodoComponentStatefulContext,
   TodoComponentStatefulProps,
-  TodosType,
+  Todos,
 } from "../types";
 
 const TodoCount = function (
@@ -13,7 +13,7 @@ const TodoCount = function (
   const $todoCount = document.createElement("h3");
   $target.appendChild($todoCount);
 
-  this.setState = (nextState: TodosType) => {
+  this.setState = (nextState: Todos) => {
     this.state = nextState;
     this.render();
   };

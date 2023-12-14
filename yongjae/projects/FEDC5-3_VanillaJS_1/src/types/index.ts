@@ -1,9 +1,9 @@
-export interface TodoType {
+export interface Todo {
   text: string;
   id: string;
   isCompleted: boolean;
 }
-export type TodosType = TodoType[];
+export type Todos = Todo[];
 
 // 컴포넌트 구조 typing
 interface CoreComponentContext<T> {
@@ -18,10 +18,9 @@ type StatelessComponentContext<T> = Omit<
   CoreComponentContext<T>,
   "state" | "setState"
 >;
-export type TodoComponentContext = CoreComponentContext<TodosType>;
-export type TodoComponentStatefulContext = StatefulComponentContext<TodosType>;
-export type TodoComponentStatelessContext =
-  StatelessComponentContext<TodosType>;
+export type TodoComponentContext = CoreComponentContext<Todos>;
+export type TodoComponentStatefulContext = StatefulComponentContext<Todos>;
+export type TodoComponentStatelessContext = StatelessComponentContext<Todos>;
 
 export interface CoreComponentProps {
   $target: HTMLElement;
@@ -32,7 +31,7 @@ export interface StatefulComponentProps<T> extends CoreComponentProps {
 }
 
 export type TodoComponentStatefulProps<T = {}> =
-  StatefulComponentProps<TodosType> & {
+  StatefulComponentProps<Todos> & {
     [K in keyof T]: T[K];
   };
 export type TodoComponentStatelessProps<T> = CoreComponentProps & {

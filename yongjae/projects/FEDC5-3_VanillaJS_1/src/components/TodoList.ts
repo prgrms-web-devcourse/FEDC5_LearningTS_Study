@@ -1,7 +1,7 @@
 import {
   TodoComponentStatefulContext,
   TodoComponentStatefulProps,
-  TodosType,
+  Todos,
 } from "../types";
 import { setItem } from "../utils/storage";
 import TodoItem from "./TodoItem";
@@ -19,7 +19,7 @@ const TodoList = function (
   const $todoList = document.createElement("ul");
   $target.appendChild($todoList);
 
-  this.setState = (nextState: TodosType) => {
+  this.setState = (nextState: Todos) => {
     this.state = nextState;
     setItem("todos", this.state);
     this.render();
