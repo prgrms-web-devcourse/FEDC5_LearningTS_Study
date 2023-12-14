@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { TodoFormProps } from '../../types/todo.ts'
+import { RenderStateProps, TodoFormProps } from '../../types/todo.ts'
 import { validateConstructorUsage } from '../../utils/validateConstructorUsage.js'
 
 export default function TodoForm(
-  this: any,
+  this: RenderStateProps,
   { $target, createTodo }: TodoFormProps
 ) {
   validateConstructorUsage(new.target)

@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Todo, TodoItem, TodoListProps } from '../../types/todo.ts'
+import { RenderStateProps, TodoItem, TodoListProps } from '../../types/todo.ts'
 import { validateConstructorUsage } from '../../utils/validateConstructorUsage.js'
 
 export default function TodoList(
-  this: any,
+  this: RenderStateProps,
   { $target, state, completeTodo, deleteTodo }: TodoListProps
 ) {
   validateConstructorUsage(new.target)
@@ -11,7 +10,7 @@ export default function TodoList(
   const $todoList = document.createElement('div')
   if ($todoList && $target) $target.appendChild($todoList)
 
-  this.render = (state: Todo) => {
+  this.render = (state: TodoItem[]) => {
     $todoList.innerHTML = `
     <ul>
     ${state
@@ -33,8 +32,6 @@ export default function TodoList(
     const $li = (event.target as HTMLLIElement).closest('.todo-item')
 
     if ($li) {
-      // 'EventTarget | null' 형식에 'className' 속성이 없습니다
-      // -> HTMLElement로 지정
       const { className } = event.target as HTMLElement
 
       className === 'remove' ? deleteTodo($li.id) : completeTodo($li.id)

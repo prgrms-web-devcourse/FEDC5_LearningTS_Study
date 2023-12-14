@@ -1,22 +1,19 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import TodoForm from './components/Todo/TodoForm.ts'
 import TodoList from './components/Todo/TodoList.ts'
 import TodoCount from './components/Todo/TodoCount.ts'
 import Header from './components/common/Header.ts'
 import { validateConstructorUsage } from './utils/validateConstructorUsage.js'
 import { getItem, setItem } from './utils/storage.ts'
-import { CommonProps, Todo, TodoItem } from './types/todo.ts'
+import { CommonProps, TodoItem, AppProps } from './types/todo.ts'
 import { v4 as uuidv4 } from 'uuid'
 
-export default function App(this: any, { $target }: CommonProps) {
+export default function App(this: AppProps, { $target }: CommonProps) {
   validateConstructorUsage(new.target)
   const storageKey = 'todo'
 
-  // state에 타입을 지정해야할까?
-  // getItem으로 얻어지는 데이터를 통해 타입 추론이 되기때문에 필요 없는건가?
   this.state = getItem(storageKey, [])
 
-  this.setState = (nextState: Todo) => {
+  this.setState = (nextState: TodoItem[]) => {
     this.state = nextState
     setItem(storageKey, JSON.stringify(nextState))
     todoList.render(this.state)
@@ -24,12 +21,10 @@ export default function App(this: any, { $target }: CommonProps) {
   }
 
   const createTodo = (text: string) => {
-    // Todo 타입을 설정하지않으면 nextState 타입은 any이다.
-    // 그래서 Todo 타입을 설정했는데 맞나..?
-    const nextState: Todo = [
+    const nextState = [
       ...this.state,
       {
-        id: uuidv4(),
+        id: uuidv4() as string,
         text,
         isCompleted: false
       }
@@ -38,14 +33,12 @@ export default function App(this: any, { $target }: CommonProps) {
   }
 
   const deleteTodo = (id: string) => {
-    const nextState: Todo = this.state.filter(
-      (todo: TodoItem) => todo.id !== id
-    )
+    const nextState = this.state.filter((todo: TodoItem) => todo.id !== id)
     this.setState(nextState)
   }
 
   const completeTodo = (id: string) => {
-    const nextState: Todo = this.state.map((todo) => {
+    const nextState = this.state.map((todo) => {
       if (todo.id === id) {
         return {
           ...todo,
