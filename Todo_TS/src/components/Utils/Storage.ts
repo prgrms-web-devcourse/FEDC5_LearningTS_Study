@@ -4,7 +4,7 @@ export const setItem = (key: string, value: string) => {
   try {
     $storage.setItem(key, value);
   } catch (e) {
-    console.error(e);
+    console.error(e instanceof Error);
   }
 };
 
@@ -16,7 +16,7 @@ export const getItem = (key: string, defaultValue = []) => {
     }
     return defaultValue;
   } catch (e) {
-    console.error(e);
+    console.error(e instanceof Error);
     return defaultValue;
   }
 };
