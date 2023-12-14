@@ -1,15 +1,17 @@
+export type UncertainElement = HTMLElement | null;
+
 export type MainParamsType = {
-  $target: HTMLElement | null;
+  $target: UncertainElement;
   initialState: StateType;
 };
 
 export type HeaderParamsType = {
-  $target: HTMLElement | null;
+  $target: UncertainElement;
   text: string;
 };
 
 export type InputParamsType = {
-  $target: HTMLElement | null;
+  $target: UncertainElement;
   onSubmit: (text: string) => void;
 };
 
@@ -21,7 +23,7 @@ export type EachStateType = {
 };
 
 export type TodoListParamsType = {
-  $target: HTMLElement | null;
+  $target: UncertainElement;
   initialState: StateType;
   toggleCheck: (id: number) => void;
   removeFunction: (id: number) => void;
