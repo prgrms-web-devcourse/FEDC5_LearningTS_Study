@@ -14,13 +14,15 @@ const InputBox = ({ $target, onSubmit }: InputParamsType) => {
 
     if (!isInit) {
       $form.addEventListener("submit", (e) => {
-        e.preventDefault(); //기본 동작을 방지하는 것
-        const $todo = $form.querySelector("input[name = todo]") as HTMLInputElement;
-        const text = $todo.value;
+        e.preventDefault();
+        const $todo = $form.querySelector<HTMLInputElement>("input[name = todo]");
 
-        if (text.length > 1) {
-          $todo.value = "";
-          onSubmit(text);
+        if ($todo) {
+          const text = $todo.value;
+          if (text.length > 1) {
+            $todo.value = "";
+            onSubmit(text);
+          }
         }
       });
       isInit = true;

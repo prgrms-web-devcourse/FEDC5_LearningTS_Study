@@ -9,7 +9,7 @@ const TodoList = ({ $target, initialState, toggleCheck, removeFunction }: TodoLi
 
   const setState = (nextState: StateType) => {
     validation(nextState);
-    state = nextState as StateType;
+    state = nextState;
     render();
   };
 
