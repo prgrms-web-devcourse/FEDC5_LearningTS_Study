@@ -1,0 +1,86 @@
+body {
+  display: flex;
+  justify-content: center;
+  color: #eee;
+  background-color: #272727;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  color: #eee;
+  animation: breathing 3s ease-out infinite normal;
+}
+
+@keyframes breathing {
+  0% {
+    transform: scale(0.9);
+  }
+  35% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+button {
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin: 0 5px;
+  border: none;
+  outline: none;
+  background-color: #f90;
+}
+
+form {
+  margin: 5px;
+  height: 60px;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+form input {
+  padding: 0 90px 0 10px;
+  font-size: 32px;
+  background-color: #eee;
+  border-radius: 6px;
+}
+form input::placeholder {
+  color: #aaa;
+}
+form button {
+  width: 60px;
+  height: 60px;
+}
+form button:hover {
+  box-shadow: 60px 0 0 0 rgba(0, 0, 0, 0.5) inset;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+ul li {
+  font-size: 24px;
+  margin-top: 20px;
+}
+ul li button {
+  font-size: 16px;
+  margin-right: 10px;
+}
+ul li button:hover {
+  box-shadow: 55px 0 0 0 rgba(0, 0, 0, 0.5) inset;
+}
+
+.countDiv {
+  margin: 20px;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=style.css.map */

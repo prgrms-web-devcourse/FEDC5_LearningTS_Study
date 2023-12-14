@@ -1,0 +1,54 @@
+body {
+    display: flex;
+    justify-content: center;
+  }
+  
+  h1 {
+    display: flex;
+    justify-content: center;
+    color: #000;
+  }
+  
+  form {
+    margin: 5px;
+    height: 40px;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+  
+  form > input {
+    width: 220px;
+  }
+  
+  form > button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  form > button:hover {
+    box-shadow: 40px 0 0 0 rgba(0, 0, 0, 0.5) inset;
+  }
+  
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+  }
+  li {
+    margin-top: 20px;
+  }
+  
+  li > button {
+    margin-right: 5px;
+  }
+  li > button:hover {
+    box-shadow: 55px 0 0 0 rgba(0, 0, 0, 0.5) inset;
+  }
+  
+  .countDiv {
+    margin: 20px;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
