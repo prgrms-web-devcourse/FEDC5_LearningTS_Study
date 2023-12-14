@@ -1,5 +1,5 @@
 import { ERROR_MESSAGES } from "../constants";
-import { Todos } from "../types";
+import { Todos } from "../types/components";
 
 export type setStorage<T> = (key: string, value: T) => void;
 export type getStorage<T> = (key: string, defaultValue: T) => T;

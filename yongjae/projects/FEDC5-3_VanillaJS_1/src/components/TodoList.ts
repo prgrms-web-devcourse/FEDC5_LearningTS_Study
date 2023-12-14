@@ -1,8 +1,8 @@
 import {
   TodoComponentStatefulContext,
   TodoComponentStatefulProps,
-  Todos,
-} from "../types";
+} from "../types/components";
+import { Todos } from "../types/states";
 import { setItem } from "../utils/storage";
 import TodoItem from "./TodoItem";
 

@@ -1,7 +1,7 @@
 import {
   TodoComponentStatelessContext,
   TodoComponentStatelessProps,
-} from "../types";
+} from "../types/components";
 
 type TodoFormProps = TodoComponentStatelessProps<{
   onSubmit: (text: string) => void;

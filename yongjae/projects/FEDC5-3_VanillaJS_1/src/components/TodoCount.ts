@@ -1,8 +1,8 @@
 import {
   TodoComponentStatefulContext,
   TodoComponentStatefulProps,
-  Todos,
-} from "../types";
+} from "../types/components";
+import { Todos } from "../types/states";
 
 const TodoCount = function (
   this: TodoComponentStatefulContext,

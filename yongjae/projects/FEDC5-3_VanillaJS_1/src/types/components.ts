@@ -1,11 +1,6 @@
-export interface Todo {
-  text: string;
-  id: string;
-  isCompleted: boolean;
-}
-export type Todos = Todo[];
-
+import { Todos } from "./states";
 // 컴포넌트 구조 typing
+// 컴포넌트 Context
 interface CoreComponentContext<T> {
   state?: T;
   setState?: (nextState: T) => void;
@@ -22,6 +17,7 @@ export type TodoComponentContext = CoreComponentContext<Todos>;
 export type TodoComponentStatefulContext = StatefulComponentContext<Todos>;
 export type TodoComponentStatelessContext = StatelessComponentContext<Todos>;
 
+// 컴포넌트 Props
 export interface CoreComponentProps {
   $target: HTMLElement;
 }

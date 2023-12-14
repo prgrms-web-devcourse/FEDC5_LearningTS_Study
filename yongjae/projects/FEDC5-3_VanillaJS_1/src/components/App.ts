@@ -1,4 +1,5 @@
-import { TodoComponentStatefulProps, Todos } from "../types";
+import { TodoComponentStatefulProps } from "../types/components";
+import { Todos } from "../types/states";
 import { setItem } from "../utils/storage";
 import { validateState } from "../utils/validateState";
 import Header from "./Header";

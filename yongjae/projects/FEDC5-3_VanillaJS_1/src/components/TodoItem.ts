@@ -1,8 +1,8 @@
 import {
   TodoComponentStatelessContext,
   TodoComponentStatelessProps,
-  Todo,
-} from "../types";
+} from "../types/components";
+import { Todo } from "../types/states";
 
 type TodoItemProps = TodoComponentStatelessProps<{
   initialValue: Todo;
