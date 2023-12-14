@@ -1,9 +1,7 @@
 import {
+  HeaderProps,
   TodoComponentStatelessContext,
-  TodoComponentStatelessProps,
 } from "../types/components";
-
-type HeaderProps = TodoComponentStatelessProps<{ text: string }>;
 
 const Header = function (
   this: TodoComponentStatelessContext,

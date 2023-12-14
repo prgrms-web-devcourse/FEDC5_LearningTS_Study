@@ -1,35 +1,46 @@
-import { Todos } from "./states";
+import { Todo, Todos } from "./states";
 // 컴포넌트 구조 typing
 // 컴포넌트 Context
-interface CoreComponentContext<T> {
-  state?: T;
-  setState?: (nextState: T) => void;
+
+export type TodoComponentContext = {
+  state?: Todos;
+  setState?: (nextState: Todos) => void;
   render: () => void;
-}
-type StatefulComponentContext<T> = {
-  [K in keyof CoreComponentContext<T>]-?: CoreComponentContext<T>[K];
 };
-type StatelessComponentContext<T> = Omit<
-  CoreComponentContext<T>,
+export type TodoComponentStatefulContext = {
+  [K in keyof TodoComponentContext]-?: TodoComponentContext[K];
+};
+
+export type TodoComponentStatelessContext = Omit<
+  TodoComponentContext,
   "state" | "setState"
 >;
-export type TodoComponentContext = CoreComponentContext<Todos>;
-export type TodoComponentStatefulContext = StatefulComponentContext<Todos>;
-export type TodoComponentStatelessContext = StatelessComponentContext<Todos>;
 
 // 컴포넌트 Props
 export interface CoreComponentProps {
   $target: HTMLElement;
 }
 
-export interface StatefulComponentProps<T> extends CoreComponentProps {
-  initialState: T;
+interface TodoStatefulComponentProps extends CoreComponentProps {
+  initialState: Todos;
+}
+export interface TodoItemProps extends CoreComponentProps {
+  initialValue: Todo;
+  onToggle: (id: string) => void;
+  onDelete: (id: string) => void;
+}
+export interface TodoListProps extends TodoStatefulComponentProps {
+  onToggle: (id: string) => void;
+  onDelete: (id: string) => void;
 }
 
-export type TodoComponentStatefulProps<T = {}> =
-  StatefulComponentProps<Todos> & {
-    [K in keyof T]: T[K];
-  };
-export type TodoComponentStatelessProps<T> = CoreComponentProps & {
-  [K in keyof T]: T[K];
-};
+export interface TodoCountProps extends TodoStatefulComponentProps {}
+
+export interface TodoFormProps extends CoreComponentProps {
+  onSubmit: (text: string) => void;
+}
+
+export interface AppProps extends TodoStatefulComponentProps {}
+export interface HeaderProps extends CoreComponentProps {
+  text: string;
+}

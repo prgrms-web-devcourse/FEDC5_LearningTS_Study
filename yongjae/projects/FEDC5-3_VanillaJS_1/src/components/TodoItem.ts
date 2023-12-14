@@ -1,14 +1,7 @@
 import {
   TodoComponentStatelessContext,
-  TodoComponentStatelessProps,
+  TodoItemProps,
 } from "../types/components";
-import { Todo } from "../types/states";
-
-type TodoItemProps = TodoComponentStatelessProps<{
-  initialValue: Todo;
-  onToggle: (id: string) => void;
-  onDelete: (id: string) => void;
-}>;
 
 const TodoItem = function (
   this: TodoComponentStatelessContext,

@@ -1,11 +1,7 @@
 import {
   TodoComponentStatelessContext,
-  TodoComponentStatelessProps,
+  TodoFormProps,
 } from "../types/components";
-
-type TodoFormProps = TodoComponentStatelessProps<{
-  onSubmit: (text: string) => void;
-}>;
 
 const TodoForm = function (
   this: TodoComponentStatelessContext,

@@ -1,4 +1,4 @@
-import { TodoComponentStatefulProps } from "../types/components";
+import { AppProps } from "../types/components";
 import { Todos } from "../types/states";
 import { setItem } from "../utils/storage";
 import { validateState } from "../utils/validateState";
@@ -8,10 +8,7 @@ import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
 interface AppContext {}
-const App = function (
-  this: AppContext,
-  { $target, initialState }: TodoComponentStatefulProps
-) {
+const App = function (this: AppContext, { $target, initialState }: AppProps) {
   // ...
   initialState = validateState(initialState);
 
@@ -62,6 +59,6 @@ const App = function (
     $target,
     initialState,
   });
-} as any as { new (props: TodoComponentStatefulProps): AppContext };
+} as any as { new (props: AppProps): AppContext };
 
 export default App;

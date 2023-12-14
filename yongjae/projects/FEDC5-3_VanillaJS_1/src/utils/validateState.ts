@@ -1,5 +1,5 @@
 import { ERROR_MESSAGES } from "../constants";
-import { Todos } from "../types/components";
+import { Todos } from "../types/states";
 // todo 상태의 유효검사 함수
 export function validateState(state: Todos, origin: Todos = []) {
   if (
