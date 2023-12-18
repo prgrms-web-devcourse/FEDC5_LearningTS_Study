@@ -1,5 +1,4 @@
 import { setItem } from "../utils/storage.js";
-import validation from "../utils/validation.js";
 import { TodoList as TodoLi } from "../types/todo.js";
 
 export default class TodoList {
@@ -18,10 +17,9 @@ export default class TodoList {
   }
 
   setState(nextState: TodoLi) {
-    const newState = validation.state(nextState);
-    this.state = newState;
-    setItem("todo", JSON.stringify(newState));
-    this.updateCount(newState);
+    this.state = nextState;
+    setItem("todo", JSON.stringify(nextState));
+    this.updateCount(nextState);
     this.render();
   };
 
