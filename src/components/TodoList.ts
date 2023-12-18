@@ -13,9 +13,7 @@ export default class TodoList {
   ) {
     $target.appendChild(this.$todoList);
 
-    if (Array.isArray(initialState)) this.state = initialState;
-    else this.state = [];
-
+    this.state = initialState;
     this.render();
 
     this.$todoList.addEventListener("click", (e) => {
