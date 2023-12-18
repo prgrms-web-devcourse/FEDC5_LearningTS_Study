@@ -2,18 +2,20 @@ import Header from "./components/Header.js";
 import TodoForm from "./components/TodoForm.js";
 import TodoList from "./components/TodoList.js";
 import TodoCount from "./components/TodoCount.js";
-import { setItem } from "./utils/storage.js";
+import { setItem, getItem } from "./utils/storage.js";
 import { TodoCount as TodoCnt, TodoList as TodoLi } from "./types/todo.js";
-
 export default class App {
   private readonly todoList: TodoList;
   private readonly todoCount: TodoCount;
+  private readonly initialState: TodoLi;
+  private readonly initialCount: TodoCnt;
 
   constructor(
     private readonly $target: HTMLElement,
-    private readonly initialState: TodoLi,
-    private readonly initialCount: TodoCnt
   ) {
+    this.initialState = getItem("todo", []);
+    this.initialCount = getItem("count", { total: 0, done: 0 });
+
     new Header($target, "Todo List");
 
     new TodoForm(
@@ -29,11 +31,11 @@ export default class App {
 
     this.todoList = new TodoList(
       $target,
-      initialState,
+      this.initialState,
       (state: TodoLi) => this.#updateCount(state)
     );
 
-    this.todoCount = new TodoCount($target, initialCount);
+    this.todoCount = new TodoCount($target, this.initialCount);
   }
 
   // 카운트 업데이트

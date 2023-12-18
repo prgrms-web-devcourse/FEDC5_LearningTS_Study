@@ -1,7 +1,6 @@
 
 export default class TodoForm {
   private readonly $form = document.createElement("form");
-  private isInit = false;
 
   constructor(
     private readonly $target: HTMLElement,
@@ -9,25 +8,24 @@ export default class TodoForm {
   ) {
     $target.appendChild(this.$form);
     this.render();
+    this.setEvent();
   }
 
   private render() {
     this.$form.innerHTML = `
-      <input type="text" placeholder="할 일을 입력하세요" name="todo" />
+      <input type="text" placeholder="할 일을 입력하세요" name="todo" minLength="2" autocomplete="off" />
       <button>추가</button>
     `;
+  };
 
-    if (this.isInit) return;
-
+  private setEvent() {
     this.$form.addEventListener("submit", (e) => {
       e.preventDefault();
       const $todo = this.$form.querySelector<HTMLInputElement>("input[name=todo]");
       if (!$todo) return;
       const text = $todo.value;
-      if (text.length > 1) {
-        $todo.value = "";
-        this.onSubmit(text);
-      } else alert("두 글자 이상 입력해주세요");
+      $todo.value = "";
+      this.onSubmit(text);
     });
-  };
+  }
 }

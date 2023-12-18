@@ -1,5 +1,4 @@
 import { setItem } from "../utils/storage.js";
-import validation from "../utils/validation.js";
 import { TodoList as TodoLi } from "../types/todo.js";
 
 export default class TodoList {
@@ -12,12 +11,37 @@ export default class TodoList {
     private readonly updateCount: (state: TodoLi) => void
   ) {
     $target.appendChild(this.$todoList);
-
-    if (Array.isArray(initialState)) this.state = initialState;
-    else this.state = [];
-
+    this.state = initialState;
     this.render();
+    this.setEvent();
+  }
 
+  setState(nextState: TodoLi) {
+    this.state = nextState;
+    setItem("todo", JSON.stringify(nextState));
+    this.updateCount(nextState);
+    this.render();
+  };
+
+  private render() {
+    this.$todoList.innerHTML = `
+      <ul>
+        ${this.state
+        .map(
+          ({ text, isCompleted }, index) => `
+              <li data-index=${index} class="todoList ${isCompleted ? "completed" : ""
+            }">
+                ${text}
+                <button class="deleteBtn">삭제</button>
+              </li>
+            `
+        )
+        .join("")}
+      </ul>
+    `;
+  };
+
+  private setEvent() {
     this.$todoList.addEventListener("click", (e) => {
       const target = e.target as HTMLLIElement;
       const $li = target.closest("li");
@@ -43,30 +67,4 @@ export default class TodoList {
       }
     });
   }
-
-  setState(nextState: TodoLi) {
-    const newState = validation.state(nextState);
-    this.state = newState;
-    setItem("todo", JSON.stringify(newState));
-    this.updateCount(newState);
-    this.render();
-  };
-
-  private render() {
-    this.$todoList.innerHTML = `
-      <ul>
-        ${this.state
-        .map(
-          ({ text, isCompleted }, index) => `
-              <li data-index=${index} class="todoList ${isCompleted ? "completed" : ""
-            }">
-                ${text}
-                <button class="deleteBtn">삭제</button>
-              </li>
-            `
-        )
-        .join("")}
-      </ul>
-    `;
-  };
 }
