@@ -8,6 +8,7 @@ export default class TodoForm {
   ) {
     $target.appendChild(this.$form);
     this.render();
+    this.setEvent();
   }
 
   private render() {
@@ -15,7 +16,9 @@ export default class TodoForm {
       <input type="text" placeholder="할 일을 입력하세요" name="todo" minLength="2" autocomplete="off" />
       <button>추가</button>
     `;
+  };
 
+  private setEvent() {
     this.$form.addEventListener("submit", (e) => {
       e.preventDefault();
       const $todo = this.$form.querySelector<HTMLInputElement>("input[name=todo]");
@@ -24,5 +27,5 @@ export default class TodoForm {
       $todo.value = "";
       this.onSubmit(text);
     });
-  };
+  }
 }
