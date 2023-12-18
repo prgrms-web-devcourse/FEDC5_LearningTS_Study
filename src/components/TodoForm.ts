@@ -13,7 +13,7 @@ export default class TodoForm {
 
   private render() {
     this.$form.innerHTML = `
-      <input type="text" placeholder="할 일을 입력하세요" name="todo" />
+      <input type="text" placeholder="할 일을 입력하세요" name="todo" minLength="2" autocomplete="off" />
       <button>추가</button>
     `;
 
@@ -24,10 +24,8 @@ export default class TodoForm {
       const $todo = this.$form.querySelector<HTMLInputElement>("input[name=todo]");
       if (!$todo) return;
       const text = $todo.value;
-      if (text.length > 1) {
-        $todo.value = "";
-        this.onSubmit(text);
-      } else alert("두 글자 이상 입력해주세요");
+      $todo.value = "";
+      this.onSubmit(text);
     });
   };
 }
